@@ -1,0 +1,46 @@
+ShipID,ShipName,MaidenYear,PortOfOrigin,CrewCapacity,Sails
+1,Black Pearl,1659,Algeciras,28,1
+2,Black Wind,1651,Milford Haven,148,9
+3,Dagger,1684,Barcelona,140,9
+4,Dagon's Feast,1685,Hamburg,54,3
+5,Esgred,1654,Saint Petersburg,55,3
+6,Fingerdancer,1679,Nagoya,95,7
+7,Foamdrinker,1656,Rotterdam,49,4
+8,Forlorn Hope,1660,Algeciras,51,4
+9,Golden Storm,1679,Barcelona,97,7
+10,Great Kraken,1663,London,141,10
+11,Grey Ghost,1671,Antwerp,37,3
+12,Grief,1652,Zeebrugge,31,3
+13,Hardhand,1665,Valencia,80,6
+14,Iron Lady,1682,Antwerp,40,2
+15,Iron Vengeance,1682,Gothenburg,30,1
+16,Iron Victory,1650,Maldives,88,5
+17,Iron Wind,1692,Genoa,129,8
+18,Iron Wing,1659,Yokosuka,139,9
+19,Kite,1659,Marseille,76,6
+20,Kraken's Kiss,1654,Zeebrugge,30,1
+21,Lamentation,1652,Barcelona,47,4
+22,Leviathan,1700,Milford Haven,141,9
+23,Lord Dagon,1697,Marseille,58,3
+24,Lord Quellon,1677,Hamburg,129,9
+25,Lord Vickon,1698,Novorossisk,103,6
+26,Maiden's Bane,1658,Genoa,111,7
+27,Nightflyer,1660,Dunkirk,25,2
+28,Reapers Wind,1662,Algeciras,43,3
+29,Red Jester,1688,Shanghai,46,4
+30,Red Tide,1690,Saint Petersburg,40,3
+31,Salty Wench,1673,Bergen,34,3
+32,Sea Witch,1651,Bremerhaven,43,3
+33,Sea Song,1700,Valencia,100,6
+34,Seven Skulls,1657,Bergen,76,6
+35,Shark,1663,Trieste,122,9
+36,Silence,1665,Maldives,137,9
+37,Silverfin,1647,Primorsk,145,9
+38,Sparrowhawk,1679,Rotterdam,140,9
+39,Swiftin,1646,Gothenburg,119,8
+40,Thrall's Bane,1669,Grimsby,53,3
+41,Thunderer,1678,Le Havre,78,6
+42,Warhammer,1643,Grimsby,74,4
+43,Warrior Wench,1689,Valencia,60,4
+44,White Widow,1644,Bremerhaven,86,6
+45,Woe,1668,Algeciras,52,4

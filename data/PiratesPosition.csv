@@ -1,0 +1,9 @@
+PositionID,PositionName,ShareOfBooty,ReqYrsExp
+1,captain,25.00%,10
+2,commador,50.00%,15
+3,deckhand,2.00%,0
+4,first mate,8.00%,8
+5,bosun,5.00%,6
+6,quartermaster,4.00%,4
+7,cook,3.00%,3
+8,gunner,3.00%,1

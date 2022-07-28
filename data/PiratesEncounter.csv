@@ -1,0 +1,501 @@
+EncounterID,LocationName,Booty,EncounterDate,Casualties,Target,ShipID
+1,Bristol Channel,"$1,300.00",7/12/1665,83,royal navy,21
+2,Bristol Channel,"$5,500.00",9/15/1697,39,royal navy,39
+3,Korea Strait,$500.00,5/18/1656,99,other pirates,35
+4,Baltic Sea,"$6,900.00",9/13/1665,74,other pirates,24
+5,North Atlantic,"$1,600.00",5/25/1700,44,royal navy,36
+6,Pentland Firth,"$1,000.00",10/27/1677,42,other,39
+7,Bermuda,"$6,000.00",11/8/1682,43,port town,41
+8,Chesapeake Bay,"$5,000.00",8/13/1700,33,merchants,31
+9,Adriatic Sea,"$5,300.00",11/21/1687,84,other,33
+10,Dardanelles,"$7,800.00",7/4/1699,29,port town,6
+11,East China Sea,"$6,100.00",1/2/1684,14,merchants,42
+12,Adriatic Sea,"$4,900.00",8/15/1700,37,other pirates,26
+13,Panama Bay,"$7,200.00",9/3/1682,90,other,29
+14,Panama Bay,"$5,800.00",9/20/1647,71,royal navy,2
+15,East China Sea,"$5,300.00",12/12/1646,84,other,8
+16,Adriatic Sea,"$1,100.00",6/20/1697,4,merchants,23
+17,Sibuyan Sea,"$2,700.00",6/6/1685,45,merchants,6
+18,Pentland Firth,$900.00,5/15/1691,14,port town,7
+19,Yellow Sea,"$2,100.00",8/17/1665,81,other pirates,29
+20,North Sea,"$1,700.00",6/20/1699,36,merchants,14
+21,Sea of Japan,"$2,000.00",6/14/1645,35,other,29
+22,Gulf of Asinara,"$1,300.00",4/26/1677,0,other pirates,28
+23,Gulf of Asinara,"$3,100.00",7/23/1690,21,royal navy,8
+24,Aegean Sea,"$5,400.00",3/16/1694,90,port town,37
+25,Gulf of Mexico,"$3,000.00",11/26/1690,53,other pirates,28
+26,Chesapeake Bay,"$5,200.00",12/4/1678,59,other,39
+27,The Great Salt Lake,"$7,700.00",5/10/1697,19,other pirates,43
+28,Panama Bay,"$3,600.00",10/16/1694,29,royal navy,3
+29,Pensacola Bay,"$2,100.00",9/3/1699,7,royal navy,44
+30,Dardanelles,"$1,400.00",7/28/1697,94,merchants,1
+31,Gulf of Asinara,"$1,300.00",7/9/1700,10,port town,22
+32,Bermuda,"$7,300.00",7/1/1689,6,other,39
+33,English Channel,"$2,800.00",2/26/1695,10,royal navy,40
+34,Gulf of Mexico,"$1,000.00",6/6/1695,24,port town,39
+35,Korea Strait,"$5,500.00",6/12/1664,23,port town,3
+36,Korea Strait,"$4,100.00",9/24/1697,75,other,36
+37,Bristol Channel,"$7,900.00",10/20/1689,54,royal navy,11
+38,Sea of Japan,"$4,000.00",9/6/1666,21,merchants,13
+39,East China Sea,"$1,200.00",2/9/1696,21,other pirates,1
+40,Dardanelles,"$7,100.00",6/6/1679,19,other,25
+41,Yellow Sea,"$8,000.00",3/19/1681,6,port town,7
+42,Baltic Sea,"$4,400.00",8/2/1699,84,other,44
+43,North Sea,"$1,500.00",10/12/1700,6,merchants,45
+44,Korea Strait,"$3,800.00",4/1/1687,4,other,33
+45,Baltic Sea,$600.00,12/21/1698,63,royal navy,14
+46,Gulf of Mexico,"$4,300.00",6/14/1661,36,merchants,32
+47,Adriatic Sea,"$1,400.00",5/18/1700,81,other,36
+48,Gulf of Asinara,$800.00,10/3/1700,46,port town,22
+49,Baltic Sea,"$6,200.00",7/9/1697,34,port town,8
+50,Dardanelles,"$6,900.00",9/22/1698,37,royal navy,11
+51,Bristol Channel,"$2,800.00",3/11/1681,29,royal navy,8
+52,Caribbean,"$4,600.00",5/24/1694,44,other pirates,34
+53,Chesapeake Bay,"$4,200.00",5/21/1666,29,other,35
+54,Yellow Sea,"$3,100.00",9/24/1684,30,other pirates,20
+55,English Channel,"$5,000.00",12/4/1662,18,port town,16
+56,East China Sea,"$2,200.00",7/16/1681,11,other,12
+57,Aegean Sea,"$7,100.00",6/24/1684,130,other,10
+58,English Channel,"$1,500.00",6/11/1696,10,merchants,2
+59,Bristol Channel,"$2,000.00",7/22/1699,8,port town,23
+60,East China Sea,"$2,900.00",2/12/1700,2,other,6
+61,Chesapeake Bay,"$5,000.00",5/23/1643,4,merchants,29
+62,North Atlantic,"$4,500.00",9/6/1698,51,royal navy,23
+63,The Great Salt Lake,"$3,800.00",5/6/1654,95,other,32
+64,Gulf of Finland,"$5,000.00",4/1/1698,82,merchants,28
+65,Gulf of Mexico,"$6,400.00",9/17/1697,54,other,36
+66,Dardanelles,"$2,700.00",9/23/1691,26,other pirates,30
+67,Panama Bay,"$7,300.00",4/8/1670,13,merchants,24
+68,Gulf of Finland,"$5,900.00",5/26/1679,3,royal navy,32
+69,Pentland Firth,"$5,500.00",7/10/1692,11,other pirates,24
+70,North Sea,"$5,700.00",10/11/1687,27,other pirates,23
+71,Gulf of Mexico,"$1,300.00",4/1/1698,18,other pirates,6
+72,Sea of Japan,"$7,100.00",8/22/1696,55,other pirates,26
+73,English Channel,"$7,300.00",7/22/1698,7,other,4
+74,Bristol Channel,$600.00,6/14/1687,6,royal navy,24
+75,Korea Strait,"$5,400.00",3/15/1684,27,port town,7
+76,North Atlantic,"$6,000.00",4/19/1693,23,royal navy,32
+77,Bermuda,"$5,100.00",8/14/1697,96,merchants,37
+78,Aegean Sea,$400.00,7/14/1698,112,port town,36
+79,Gulf of Mexico,$200.00,7/24/1672,8,port town,13
+80,Dardanelles,"$5,700.00",11/4/1680,19,other,7
+81,East China Sea,"$1,900.00",10/16/1692,13,royal navy,38
+82,Sibuyan Sea,"$3,700.00",7/15/1645,16,other,21
+83,Korea Strait,"$3,700.00",4/14/1689,18,other,1
+84,Gulf of Asinara,"$4,100.00",8/24/1689,3,merchants,15
+85,The Great Salt Lake,"$7,000.00",10/27/1685,98,port town,43
+86,Pensacola Bay,"$3,400.00",6/14/1683,69,merchants,18
+87,Caribbean,"$5,200.00",7/16/1661,1,merchants,30
+88,Sea of Japan,"$5,100.00",9/16/1695,55,merchants,10
+89,Sea of Japan,"$2,600.00",5/22/1685,14,port town,27
+90,Chesapeake Bay,"$3,300.00",8/4/1697,58,other,18
+91,Adriatic Sea,"$7,900.00",5/1/1691,41,royal navy,23
+92,English Channel,"$4,400.00",4/16/1699,28,port town,44
+93,East China Sea,"$2,000.00",4/25/1685,19,merchants,7
+94,Caribbean,"$5,500.00",6/2/1655,56,merchants,1
+95,Korea Strait,"$6,400.00",6/20/1694,21,merchants,6
+96,Pentland Firth,$400.00,9/2/1688,37,port town,7
+97,Chesapeake Bay,"$7,100.00",8/19/1691,54,royal navy,31
+98,The Great Salt Lake,"$7,800.00",6/5/1685,61,royal navy,30
+99,Korea Strait,"$1,800.00",9/20/1698,30,other,10
+100,Sea of Japan,"$6,300.00",9/17/1694,36,merchants,45
+101,Sea of Japan,"$7,300.00",11/5/1685,62,port town,41
+102,The Great Salt Lake,"$7,900.00",5/21/1694,1,port town,41
+103,Chesapeake Bay,"$6,800.00",4/26/1688,90,other pirates,4
+104,Pentland Firth,"$6,100.00",5/15/1663,26,royal navy,2
+105,Dardanelles,"$5,800.00",3/6/1673,66,other pirates,43
+106,Sea of Japan,"$3,800.00",9/4/1699,14,other pirates,44
+107,The Great Salt Lake,"$4,100.00",6/4/1664,43,other pirates,25
+108,Yellow Sea,"$1,400.00",11/22/1693,86,other,7
+109,Adriatic Sea,"$2,000.00",7/16/1688,33,royal navy,35
+110,Adriatic Sea,"$2,400.00",2/17/1700,14,other pirates,22
+111,Sea of Japan,"$1,500.00",8/1/1674,25,royal navy,11
+112,Adriatic Sea,"$7,300.00",8/10/1696,83,other,39
+113,Pensacola Bay,"$3,100.00",6/23/1667,19,other,43
+114,North Sea,"$6,000.00",5/16/1678,64,royal navy,24
+115,Sea of Japan,"$2,800.00",8/23/1683,48,merchants,2
+116,Korea Strait,$700.00,8/28/1697,75,royal navy,40
+117,East China Sea,"$6,300.00",8/25/1697,27,other,40
+118,Gulf of Finland,"$5,400.00",6/9/1697,79,port town,37
+119,Bermuda,"$3,000.00",3/10/1679,74,other,29
+120,East China Sea,"$1,100.00",9/4/1690,9,merchants,8
+121,Pensacola Bay,"$3,300.00",9/8/1700,34,merchants,44
+122,Chesapeake Bay,"$3,200.00",8/1/1678,19,royal navy,43
+123,The Great Salt Lake,"$3,000.00",5/14/1694,24,other,37
+124,Baltic Sea,"$6,300.00",11/6/1689,113,royal navy,1
+125,Baltic Sea,"$3,700.00",8/12/1669,39,other pirates,28
+126,Baltic Sea,"$1,100.00",4/7/1689,0,royal navy,29
+127,English Channel,"$7,400.00",3/24/1698,12,other pirates,10
+128,Gulf of Finland,$600.00,10/22/1690,26,other,34
+129,North Sea,"$2,400.00",6/20/1681,2,royal navy,42
+130,Aegean Sea,"$2,800.00",6/10/1682,69,port town,16
+131,Baltic Sea,"$5,900.00",10/22/1686,69,other pirates,19
+132,Panama Bay,"$1,400.00",4/13/1691,76,other pirates,41
+133,Pensacola Bay,"$2,400.00",7/11/1672,40,merchants,42
+134,Adriatic Sea,"$7,600.00",5/12/1700,96,merchants,22
+135,Gulf of Finland,"$5,300.00",6/10/1699,49,port town,32
+136,Chesapeake Bay,"$6,400.00",11/3/1700,4,merchants,17
+137,Bermuda,"$5,200.00",11/17/1695,41,other pirates,26
+138,Gulf of Mexico,"$5,200.00",3/18/1698,4,port town,26
+139,Bermuda,"$2,900.00",6/15/1679,36,royal navy,39
+140,Pentland Firth,$900.00,6/1/1699,117,royal navy,11
+141,Sea of Japan,"$6,400.00",1/6/1689,11,merchants,10
+142,Sea of Japan,"$3,100.00",4/3/1683,94,royal navy,24
+143,Panama Bay,"$2,600.00",9/25/1700,123,royal navy,17
+144,The Great Salt Lake,"$6,800.00",9/10/1690,41,royal navy,20
+145,Panama Bay,$400.00,9/4/1669,90,port town,21
+146,Pentland Firth,"$6,600.00",10/13/1685,24,royal navy,11
+147,South China Sea,"$2,800.00",3/22/1696,27,port town,26
+148,English Channel,"$6,200.00",9/18/1687,77,port town,39
+149,Caribbean,"$8,000.00",4/17/1699,7,royal navy,14
+150,North Atlantic,"$5,700.00",8/24/1700,20,other,29
+151,Gulf of Finland,"$4,400.00",11/3/1690,29,other,32
+152,Bermuda,"$2,200.00",9/9/1690,21,merchants,15
+153,South China Sea,"$4,400.00",7/11/1672,5,royal navy,30
+154,Chesapeake Bay,$300.00,7/17/1693,29,merchants,31
+155,Baltic Sea,"$3,400.00",11/16/1650,23,other pirates,8
+156,Pensacola Bay,"$6,100.00",4/27/1686,12,royal navy,7
+157,North Atlantic,"$6,000.00",5/6/1666,23,royal navy,30
+158,Bristol Channel,"$6,200.00",6/19/1675,104,other pirates,18
+159,Panama Bay,"$3,400.00",4/16/1670,46,merchants,21
+160,The Great Salt Lake,"$7,200.00",6/1/1699,61,port town,19
+161,Adriatic Sea,"$1,100.00",4/17/1654,21,merchants,12
+162,English Channel,"$7,000.00",4/21/1649,34,merchants,21
+163,Bermuda,"$3,800.00",8/19/1700,43,other,40
+164,English Channel,"$8,000.00",8/7/1645,33,royal navy,5
+165,Bermuda,"$7,900.00",4/8/1675,14,port town,24
+166,Bermuda,"$3,300.00",4/16/1678,80,merchants,35
+167,Panama Bay,"$6,200.00",9/26/1699,61,royal navy,26
+168,Aegean Sea,"$6,800.00",9/7/1671,47,royal navy,16
+169,Sea of Japan,"$2,200.00",2/24/1676,28,royal navy,30
+170,Gulf of Mexico,"$2,500.00",4/21/1696,35,port town,14
+171,English Channel,"$1,500.00",10/14/1644,62,royal navy,29
+172,Bristol Channel,"$7,200.00",8/6/1683,120,royal navy,5
+173,Gulf of Mexico,"$7,400.00",1/28/1700,43,other pirates,22
+174,The Great Salt Lake,"$7,700.00",1/8/1691,7,other,30
+175,South China Sea,"$7,800.00",8/16/1691,44,other pirates,2
+176,North Sea,"$3,900.00",4/7/1654,95,merchants,8
+177,Pensacola Bay,"$7,600.00",4/20/1675,76,royal navy,11
+178,Gulf of Mexico,"$4,300.00",4/11/1685,75,other pirates,7
+179,Caribbean,"$7,200.00",9/24/1700,41,port town,38
+180,Panama Bay,"$5,900.00",11/13/1693,23,port town,32
+181,Gulf of Finland,"$2,100.00",11/8/1699,13,other pirates,34
+182,North Atlantic,"$3,800.00",1/21/1681,43,other pirates,1
+183,Panama Bay,"$1,000.00",8/16/1652,1,merchants,29
+184,Bristol Channel,"$1,800.00",6/26/1674,25,other pirates,3
+185,The Great Salt Lake,$700.00,8/9/1700,38,merchants,44
+186,North Sea,"$2,700.00",6/14/1699,61,other,44
+187,Dardanelles,"$7,600.00",9/23/1648,64,other,5
+188,English Channel,"$4,800.00",7/18/1694,47,royal navy,31
+189,East China Sea,"$7,400.00",6/20/1691,4,royal navy,25
+190,Baltic Sea,"$2,200.00",8/4/1669,65,other pirates,43
+191,Gulf of Asinara,$300.00,7/11/1654,28,royal navy,29
+192,Korea Strait,"$3,100.00",10/22/1678,91,other,35
+193,Chesapeake Bay,"$5,500.00",7/22/1700,85,merchants,22
+194,Bristol Channel,"$5,500.00",7/15/1683,33,other,43
+195,Panama Bay,$800.00,4/25/1692,71,merchants,25
+196,Adriatic Sea,"$3,400.00",4/21/1663,58,port town,35
+197,Korea Strait,"$1,300.00",5/24/1699,52,other,18
+198,Gulf of Mexico,"$7,000.00",12/4/1694,14,royal navy,40
+199,Gulf of Mexico,"$5,000.00",9/9/1677,21,merchants,16
+200,Aegean Sea,"$1,900.00",10/2/1698,46,other pirates,10
+201,North Atlantic,$700.00,7/9/1659,67,other pirates,6
+202,Caribbean,"$5,500.00",6/21/1699,25,other pirates,36
+203,English Channel,"$7,100.00",2/21/1692,30,port town,38
+204,Baltic Sea,"$1,500.00",10/12/1687,16,port town,20
+205,Bristol Channel,$900.00,10/4/1699,22,royal navy,17
+206,Panama Bay,"$2,700.00",11/28/1691,41,merchants,17
+207,Chesapeake Bay,"$7,200.00",7/20/1669,10,port town,42
+208,Adriatic Sea,"$2,400.00",6/27/1699,82,other,17
+209,Pentland Firth,"$5,100.00",6/1/1669,58,merchants,35
+210,Chesapeake Bay,"$5,100.00",7/3/1700,53,other,22
+211,English Channel,"$4,700.00",3/2/1683,33,port town,30
+212,South China Sea,"$3,500.00",8/8/1690,40,merchants,31
+213,Baltic Sea,"$5,100.00",9/7/1688,22,merchants,19
+214,Adriatic Sea,"$2,100.00",6/19/1691,42,royal navy,10
+215,Baltic Sea,"$4,800.00",7/11/1700,20,other,22
+216,The Great Salt Lake,"$4,900.00",7/17/1692,82,merchants,12
+217,Korea Strait,"$7,600.00",5/24/1682,74,other,5
+218,Caribbean,"$6,400.00",11/6/1693,29,royal navy,38
+219,Caribbean,"$2,600.00",8/14/1700,21,merchants,14
+220,South China Sea,"$1,800.00",3/25/1680,54,port town,27
+221,Adriatic Sea,"$5,400.00",1/12/1696,5,other pirates,41
+222,East China Sea,"$7,900.00",9/20/1697,56,other,7
+223,English Channel,"$6,400.00",6/1/1680,122,merchants,28
+224,North Atlantic,"$2,700.00",6/23/1693,49,other pirates,41
+225,Baltic Sea,"$2,300.00",6/17/1681,13,other,15
+226,Pensacola Bay,"$3,300.00",12/20/1695,36,other,26
+227,North Atlantic,"$5,200.00",9/12/1668,35,port town,16
+228,Bermuda,"$5,200.00",6/21/1695,20,royal navy,12
+229,Sea of Japan,"$4,000.00",1/5/1648,46,royal navy,2
+230,Bermuda,"$6,000.00",12/16/1697,6,merchants,15
+231,Dardanelles,"$4,500.00",9/14/1695,22,other,45
+232,Pentland Firth,"$2,300.00",7/17/1667,76,port town,43
+233,Bristol Channel,"$4,400.00",5/4/1676,57,royal navy,4
+234,English Channel,"$4,000.00",4/14/1680,13,other pirates,4
+235,Bermuda,"$4,300.00",5/20/1676,47,other pirates,9
+236,The Great Salt Lake,"$5,400.00",8/20/1678,63,other,39
+237,Bristol Channel,"$5,600.00",1/6/1696,50,other,38
+238,Gulf of Asinara,"$3,000.00",8/13/1675,76,port town,25
+239,The Great Salt Lake,"$1,500.00",10/25/1690,36,port town,17
+240,North Sea,"$3,100.00",7/21/1699,54,other pirates,23
+241,North Atlantic,"$2,700.00",9/10/1698,66,port town,26
+242,Chesapeake Bay,"$7,100.00",11/9/1678,73,merchants,43
+243,Panama Bay,"$2,100.00",9/3/1693,52,other pirates,19
+244,The Great Salt Lake,"$5,900.00",4/23/1659,35,other,8
+245,South China Sea,"$3,500.00",2/13/1658,13,royal navy,3
+246,South China Sea,"$6,400.00",3/3/1687,49,royal navy,23
+247,South China Sea,"$6,400.00",7/26/1686,88,merchants,3
+248,The Great Salt Lake,"$4,400.00",8/19/1678,26,other,30
+249,Pentland Firth,"$6,600.00",11/13/1670,72,merchants,1
+250,The Great Salt Lake,$600.00,7/22/1678,40,merchants,9
+251,Pentland Firth,"$1,100.00",4/11/1694,28,other,19
+252,Korea Strait,"$2,300.00",3/22/1692,71,port town,45
+253,Gulf of Finland,"$6,700.00",7/16/1680,27,port town,42
+254,Adriatic Sea,"$3,000.00",6/16/1699,32,other,24
+255,Chesapeake Bay,"$5,500.00",9/2/1683,3,royal navy,7
+256,Bermuda,"$5,300.00",10/24/1695,9,royal navy,20
+257,East China Sea,"$6,400.00",8/23/1687,49,merchants,34
+258,Bristol Channel,"$2,800.00",6/7/1660,0,port town,21
+259,Caribbean,"$7,500.00",10/3/1694,59,port town,40
+260,Yellow Sea,"$4,400.00",4/20/1686,28,other pirates,31
+261,English Channel,"$6,200.00",7/21/1700,77,other pirates,22
+262,Gulf of Mexico,$900.00,9/1/1680,60,royal navy,6
+263,Sibuyan Sea,"$6,200.00",4/12/1691,53,other pirates,34
+264,English Channel,"$5,300.00",10/23/1696,62,other pirates,38
+265,Pentland Firth,"$7,800.00",5/28/1698,53,port town,14
+266,North Sea,"$7,000.00",2/15/1682,56,other,11
+267,Panama Bay,$600.00,4/3/1700,1,merchants,22
+268,Gulf of Finland,"$6,200.00",2/25/1668,37,royal navy,31
+269,Aegean Sea,"$4,100.00",3/8/1680,11,other,35
+270,Sea of Japan,"$2,400.00",7/12/1700,33,other pirates,17
+271,The Great Salt Lake,"$4,500.00",5/24/1672,48,port town,13
+272,Panama Bay,"$2,000.00",10/7/1674,4,port town,16
+273,Dardanelles,"$1,700.00",8/1/1685,9,royal navy,25
+274,Baltic Sea,"$3,900.00",8/13/1694,93,other,34
+275,Adriatic Sea,"$4,900.00",6/16/1644,11,port town,2
+276,North Atlantic,"$2,200.00",12/13/1686,30,royal navy,2
+277,Aegean Sea,"$4,600.00",8/18/1686,3,port town,35
+278,Pensacola Bay,"$4,600.00",3/3/1697,50,merchants,23
+279,Dardanelles,"$7,900.00",11/24/1685,27,royal navy,4
+280,Sibuyan Sea,"$7,200.00",1/21/1689,23,port town,10
+281,Sibuyan Sea,"$6,000.00",8/22/1659,26,other,31
+282,Baltic Sea,"$5,300.00",6/14/1676,60,royal navy,1
+283,Gulf of Mexico,"$4,300.00",1/22/1693,47,port town,40
+284,Gulf of Mexico,$600.00,9/23/1659,23,other,21
+285,Sibuyan Sea,"$1,200.00",12/5/1699,83,other pirates,44
+286,Pentland Firth,"$2,900.00",10/16/1698,99,royal navy,14
+287,Adriatic Sea,"$2,900.00",7/2/1681,50,royal navy,2
+288,Sea of Japan,"$6,300.00",5/7/1696,69,other,37
+289,Chesapeake Bay,$800.00,4/12/1691,100,port town,4
+290,Caribbean,"$6,300.00",1/24/1694,15,royal navy,37
+291,Sibuyan Sea,"$7,800.00",3/13/1680,44,royal navy,28
+292,Baltic Sea,"$7,000.00",6/9/1698,39,merchants,39
+293,East China Sea,"$5,200.00",8/17/1685,30,port town,10
+294,Sibuyan Sea,"$1,500.00",9/25/1684,14,port town,1
+295,Pentland Firth,"$1,700.00",7/7/1687,58,other pirates,20
+296,Korea Strait,$500.00,9/28/1688,55,other pirates,42
+297,South China Sea,"$1,700.00",9/4/1698,79,port town,8
+298,East China Sea,"$2,500.00",4/19/1697,35,port town,43
+299,East China Sea,"$2,800.00",5/25/1699,15,port town,12
+300,Yellow Sea,"$6,800.00",9/14/1671,60,port town,2
+301,North Atlantic,"$5,300.00",7/18/1686,82,other pirates,11
+302,Gulf of Asinara,"$2,000.00",4/20/1681,1,merchants,30
+303,Gulf of Mexico,"$1,300.00",1/21/1678,50,other pirates,24
+304,East China Sea,$800.00,9/3/1697,97,royal navy,1
+305,Gulf of Finland,"$6,200.00",8/19/1688,42,other pirates,23
+306,Gulf of Mexico,"$6,300.00",8/6/1678,8,other,11
+307,Caribbean,$800.00,7/3/1648,9,other,21
+308,Yellow Sea,"$5,600.00",8/27/1686,64,port town,41
+309,Adriatic Sea,"$1,800.00",9/3/1693,45,royal navy,40
+310,Aegean Sea,"$4,600.00",12/20/1698,72,merchants,36
+311,Bermuda,"$7,000.00",8/10/1684,1,other,5
+312,Aegean Sea,"$1,600.00",9/18/1665,16,merchants,29
+313,Bermuda,"$5,100.00",2/4/1698,15,royal navy,45
+314,Adriatic Sea,$400.00,3/24/1695,16,royal navy,26
+315,Dardanelles,"$2,200.00",9/1/1696,31,port town,16
+316,Sea of Japan,"$2,500.00",7/20/1695,3,port town,23
+317,Korea Strait,"$7,100.00",4/11/1695,65,other pirates,38
+318,Chesapeake Bay,"$2,600.00",7/5/1693,15,merchants,45
+319,Gulf of Asinara,"$2,000.00",5/12/1677,12,other pirates,42
+320,Pensacola Bay,"$1,300.00",9/7/1696,53,other pirates,14
+321,Korea Strait,"$4,900.00",12/26/1690,18,port town,23
+322,Korea Strait,"$4,700.00",6/1/1676,4,port town,42
+323,Korea Strait,"$3,800.00",9/11/1695,65,other,15
+324,Aegean Sea,"$6,400.00",9/6/1699,6,port town,36
+325,Gulf of Mexico,"$3,300.00",6/12/1697,93,port town,36
+326,Gulf of Asinara,"$3,300.00",9/23/1669,33,port town,13
+327,Sibuyan Sea,"$7,700.00",7/21/1691,62,port town,10
+328,South China Sea,"$7,700.00",9/2/1699,39,royal navy,27
+329,Gulf of Finland,"$4,700.00",9/6/1691,44,port town,34
+330,Chesapeake Bay,"$2,500.00",7/2/1700,107,other pirates,22
+331,Bristol Channel,$400.00,7/7/1673,34,port town,4
+332,Korea Strait,"$5,400.00",12/18/1690,40,port town,24
+333,Adriatic Sea,$400.00,4/24/1660,26,royal navy,5
+334,Caribbean,"$2,600.00",10/10/1700,38,other,39
+335,East China Sea,$600.00,5/28/1700,13,other,45
+336,Bristol Channel,"$4,500.00",7/17/1668,39,other,24
+337,Pensacola Bay,"$3,900.00",5/4/1697,4,other,28
+338,North Atlantic,"$2,900.00",9/2/1699,1,merchants,42
+339,East China Sea,"$5,400.00",4/11/1652,26,other,13
+340,Gulf of Mexico,"$6,900.00",4/11/1699,108,other pirates,34
+341,Sea of Japan,"$5,100.00",8/18/1695,9,other,43
+342,Adriatic Sea,"$7,100.00",12/17/1687,46,other pirates,3
+343,North Sea,$200.00,4/22/1700,49,other pirates,11
+344,Dardanelles,$800.00,7/13/1700,48,merchants,22
+345,Gulf of Finland,"$2,600.00",3/2/1688,5,port town,25
+346,Korea Strait,"$5,900.00",11/24/1700,15,port town,36
+347,South China Sea,"$5,000.00",9/13/1699,59,other,10
+348,Gulf of Finland,"$3,700.00",9/12/1699,46,port town,36
+349,East China Sea,"$1,500.00",4/5/1696,2,other,37
+350,Chesapeake Bay,"$1,900.00",3/8/1693,10,royal navy,35
+351,Gulf of Asinara,"$6,600.00",7/11/1698,42,merchants,10
+352,Korea Strait,"$4,400.00",9/9/1682,37,royal navy,9
+353,Dardanelles,$900.00,2/9/1700,34,other pirates,44
+354,North Sea,"$1,700.00",4/16/1689,33,other pirates,27
+355,South China Sea,"$1,300.00",3/1/1695,57,other,2
+356,North Atlantic,"$3,200.00",8/19/1669,11,port town,35
+357,South China Sea,"$7,500.00",8/5/1692,55,other,20
+358,East China Sea,"$3,300.00",7/9/1686,43,royal navy,25
+359,Bristol Channel,"$1,200.00",4/17/1675,135,other,18
+360,Korea Strait,"$5,800.00",11/13/1690,6,other,17
+361,Panama Bay,"$2,100.00",3/7/1676,71,port town,15
+362,Pentland Firth,"$6,400.00",9/13/1690,14,royal navy,3
+363,Baltic Sea,"$2,200.00",8/23/1691,3,royal navy,1
+364,East China Sea,"$5,200.00",4/18/1689,99,merchants,15
+365,Aegean Sea,"$5,100.00",8/21/1693,7,other pirates,23
+366,Panama Bay,$700.00,5/17/1690,22,other pirates,16
+367,Pensacola Bay,$200.00,6/28/1684,5,port town,6
+368,Caribbean,"$2,200.00",6/12/1685,63,royal navy,32
+369,The Great Salt Lake,"$6,900.00",4/27/1699,100,royal navy,30
+370,Gulf of Finland,"$5,500.00",8/1/1687,46,port town,34
+371,Baltic Sea,"$5,900.00",2/25/1657,15,merchants,29
+372,North Sea,"$4,900.00",7/18/1681,69,royal navy,1
+373,Gulf of Asinara,"$7,500.00",4/22/1673,52,other,9
+374,Bristol Channel,"$8,000.00",7/17/1682,35,other,35
+375,The Great Salt Lake,"$4,700.00",5/22/1699,11,port town,17
+376,South China Sea,"$5,900.00",4/12/1677,3,other,15
+377,Aegean Sea,"$3,400.00",6/5/1693,35,other pirates,42
+378,Yellow Sea,"$5,300.00",5/14/1698,12,other pirates,13
+379,English Channel,"$3,800.00",9/27/1678,87,royal navy,30
+380,North Atlantic,"$7,600.00",7/7/1662,0,other,24
+381,Yellow Sea,"$3,800.00",7/7/1687,17,other,25
+382,Bristol Channel,"$2,100.00",5/27/1681,83,royal navy,13
+383,Gulf of Mexico,"$7,800.00",9/22/1659,43,merchants,16
+384,South China Sea,"$7,400.00",1/22/1691,64,merchants,27
+385,Yellow Sea,"$1,100.00",10/1/1682,79,other,5
+386,Chesapeake Bay,"$1,500.00",4/14/1700,75,other,22
+387,Sibuyan Sea,"$5,900.00",6/14/1660,27,merchants,2
+388,Dardanelles,"$5,800.00",6/13/1694,29,port town,25
+389,Baltic Sea,"$5,000.00",12/12/1698,3,other pirates,34
+390,Gulf of Finland,"$5,900.00",9/8/1677,43,royal navy,16
+391,Bermuda,"$4,500.00",10/3/1699,2,royal navy,14
+392,East China Sea,"$4,300.00",7/12/1690,75,other pirates,11
+393,North Atlantic,"$4,900.00",4/17/1696,46,port town,30
+394,Chesapeake Bay,"$7,900.00",10/24/1658,63,merchants,29
+395,Pentland Firth,"$4,700.00",8/4/1697,3,other,17
+396,Aegean Sea,"$4,100.00",9/27/1699,40,merchants,17
+397,Yellow Sea,"$1,300.00",3/22/1673,26,port town,12
+398,Gulf of Asinara,"$6,900.00",9/16/1672,11,port town,24
+399,Caribbean,"$3,600.00",4/2/1659,22,merchants,12
+400,South China Sea,"$7,900.00",10/13/1673,40,other pirates,16
+401,South China Sea,"$6,900.00",12/11/1667,31,merchants,30
+402,Baltic Sea,"$2,000.00",5/5/1687,115,other pirates,10
+403,English Channel,"$4,300.00",9/8/1653,21,royal navy,8
+404,Aegean Sea,"$6,100.00",11/21/1699,20,other,14
+405,Gulf of Finland,"$6,000.00",9/10/1697,4,port town,40
+406,Gulf of Asinara,"$7,500.00",8/10/1696,3,port town,19
+407,English Channel,"$3,500.00",6/23/1686,3,royal navy,4
+408,Bristol Channel,"$5,200.00",1/12/1695,38,other,32
+409,Aegean Sea,"$2,500.00",4/10/1688,85,other,23
+410,East China Sea,"$2,900.00",4/1/1694,41,other,13
+411,Gulf of Asinara,"$3,300.00",5/11/1692,80,merchants,7
+412,Korea Strait,"$2,100.00",8/17/1681,51,other pirates,1
+413,Gulf of Asinara,"$4,300.00",11/16/1686,1,other,18
+414,Pensacola Bay,"$5,300.00",2/27/1667,27,royal navy,24
+415,Bristol Channel,"$7,200.00",6/22/1690,41,port town,7
+416,Panama Bay,"$7,000.00",6/3/1672,35,royal navy,4
+417,Sea of Japan,"$1,500.00",10/1/1689,52,royal navy,19
+418,Sea of Japan,"$3,200.00",8/8/1683,33,other pirates,8
+419,North Sea,"$2,600.00",1/5/1694,62,other,18
+420,Pensacola Bay,$700.00,4/22/1683,8,royal navy,29
+421,Gulf of Finland,"$6,600.00",4/25/1697,30,royal navy,40
+422,Pensacola Bay,"$3,400.00",8/22/1693,95,port town,10
+423,Bristol Channel,$200.00,4/10/1699,50,other,39
+424,Caribbean,"$3,800.00",6/25/1700,85,other,22
+425,Gulf of Mexico,$800.00,8/23/1675,53,merchants,2
+426,Aegean Sea,"$7,700.00",6/24/1700,3,merchants,44
+427,East China Sea,"$3,700.00",8/27/1700,47,port town,34
+428,South China Sea,"$3,900.00",12/18/1697,67,other,45
+429,Panama Bay,"$1,600.00",4/12/1697,12,other pirates,36
+430,North Atlantic,"$4,400.00",8/16/1659,42,merchants,16
+431,Gulf of Finland,"$7,300.00",8/6/1662,30,royal navy,29
+432,Sea of Japan,"$4,300.00",4/13/1663,34,merchants,3
+433,Dardanelles,"$5,700.00",6/25/1685,12,other,41
+434,Baltic Sea,"$3,300.00",10/24/1685,11,other,9
+435,North Sea,"$6,400.00",4/21/1691,45,other,24
+436,The Great Salt Lake,"$1,800.00",3/1/1696,67,port town,15
+437,Sibuyan Sea,$500.00,7/25/1699,55,other pirates,26
+438,Gulf of Mexico,"$3,000.00",6/27/1684,23,other,20
+439,Panama Bay,"$7,700.00",7/2/1686,31,port town,27
+440,The Great Salt Lake,$400.00,10/19/1695,10,royal navy,1
+441,North Atlantic,"$4,200.00",6/16/1673,26,merchants,6
+442,Korea Strait,"$2,300.00",5/6/1691,23,merchants,7
+443,East China Sea,"$7,000.00",9/12/1668,53,merchants,43
+444,East China Sea,"$5,100.00",7/2/1681,55,other,20
+445,Adriatic Sea,"$7,800.00",10/23/1677,4,royal navy,30
+446,Korea Strait,"$6,000.00",3/9/1699,7,other,41
+447,Sea of Japan,"$1,600.00",7/17/1680,25,other pirates,30
+448,Caribbean,"$5,300.00",10/6/1669,28,other pirates,35
+449,Dardanelles,"$4,700.00",11/1/1649,48,merchants,29
+450,Sibuyan Sea,"$2,100.00",9/5/1699,80,royal navy,23
+451,Gulf of Mexico,"$2,600.00",4/24/1668,28,merchants,32
+452,Bermuda,"$2,900.00",5/18/1692,7,merchants,38
+453,Dardanelles,"$7,300.00",4/22/1697,86,port town,26
+454,Yellow Sea,"$3,400.00",5/26/1700,127,other,36
+455,Aegean Sea,"$5,000.00",9/19/1690,92,other,41
+456,Sea of Japan,"$7,300.00",4/19/1685,2,royal navy,5
+457,English Channel,"$7,000.00",8/27/1681,52,port town,16
+458,Dardanelles,"$3,000.00",5/17/1685,83,port town,1
+459,Sibuyan Sea,"$4,300.00",10/15/1686,1,merchants,7
+460,Adriatic Sea,"$3,300.00",4/1/1693,26,other,45
+461,The Great Salt Lake,"$6,800.00",11/4/1696,96,port town,36
+462,South China Sea,"$2,200.00",9/1/1698,67,port town,14
+463,Yellow Sea,"$3,400.00",9/13/1696,48,port town,4
+464,South China Sea,"$5,000.00",9/15/1700,70,other,26
+465,Caribbean,"$6,500.00",3/10/1676,57,port town,2
+466,Yellow Sea,"$3,300.00",4/13/1678,58,merchants,24
+467,English Channel,$600.00,9/19/1698,92,royal navy,40
+468,Yellow Sea,"$6,700.00",9/25/1679,2,merchants,18
+469,Adriatic Sea,"$2,500.00",7/15/1700,17,royal navy,7
+470,Adriatic Sea,"$1,000.00",10/23/1696,30,royal navy,13
+471,South China Sea,"$4,000.00",7/7/1695,39,port town,19
+472,Gulf of Asinara,"$1,600.00",3/13/1693,23,other pirates,18
+473,Dardanelles,$700.00,4/7/1672,51,port town,28
+474,North Sea,$900.00,8/16/1700,52,other pirates,19
+475,Sibuyan Sea,"$1,100.00",4/10/1678,9,other,20
+476,East China Sea,"$7,000.00",5/8/1700,65,other pirates,39
+477,North Sea,$200.00,8/23/1687,50,other pirates,27
+478,English Channel,"$4,800.00",12/7/1676,4,royal navy,9
+479,Pensacola Bay,"$2,100.00",9/3/1691,23,other,21
+480,Yellow Sea,"$6,300.00",11/8/1686,14,other pirates,4
+481,Pentland Firth,"$1,100.00",1/15/1700,103,royal navy,35
+482,Yellow Sea,$900.00,8/2/1697,1,other,26
+483,East China Sea,"$1,600.00",8/7/1699,16,port town,31
+484,Pentland Firth,"$2,900.00",1/20/1667,5,port town,30
+485,Caribbean,"$2,600.00",8/21/1698,6,royal navy,37
+486,Yellow Sea,"$4,900.00",5/2/1678,96,port town,43
+487,Gulf of Asinara,"$2,100.00",9/17/1650,139,port town,8
+488,Adriatic Sea,"$2,000.00",3/7/1690,95,other pirates,19
+489,Gulf of Asinara,"$6,300.00",11/19/1674,65,port town,8
+490,North Sea,"$1,500.00",9/14/1693,60,port town,19
+491,Chesapeake Bay,"$7,400.00",8/21/1690,57,other pirates,34
+492,Caribbean,"$7,500.00",8/9/1681,37,other pirates,12
+493,Gulf of Finland,"$5,000.00",7/10/1697,26,merchants,14
+494,Pentland Firth,"$7,200.00",9/15/1674,36,royal navy,42
+495,Sibuyan Sea,"$3,600.00",9/4/1656,7,other pirates,12
+496,Aegean Sea,$700.00,5/9/1694,58,other pirates,38
+497,Bermuda,"$3,100.00",5/8/1697,0,port town,45
+498,Pentland Firth,"$1,400.00",4/5/1699,15,other,19
+499,Bermuda,$600.00,5/21/1686,47,merchants,4
+500,Gulf of Finland,"$4,600.00 ",9/28/1692,7,royal navy,16
