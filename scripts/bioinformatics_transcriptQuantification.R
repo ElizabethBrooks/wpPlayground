@@ -3,10 +3,7 @@
 # set the working directory
 setwd("/YOUR/DIRECTORY/PATH")
 
-# install the BiocManager, if necessary
-install.packages("BiocManager")
-
-# install the Rsubread package, if necessary
+# install the BiocManager followed by the Rsubread package, if necessary
 if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 BiocManager::install("Rsubread")
