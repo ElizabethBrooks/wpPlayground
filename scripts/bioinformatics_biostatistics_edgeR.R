@@ -31,12 +31,16 @@ group <- factor(c(rep("cntrl_4h",3), rep("treat_4h",3), rep("cntrl_24h",3), rep(
 group
 colnames(tribolium_counts)
 
-#Create DGE list object
+# create DGE list object
 list <- DGEList(counts=tribolium_counts,group=group)
 
-# view available palettes
+# change the graphical parameters
 par(mfrow=c(9,3))
+
+# view all available ghibli palettes
 for(i in names(ghibli_palettes)) print(ghibli_palette(i))
+
+# close the plot and return the display to the default graphical parameters
 dev.off()
 
 # retrieve the vector of colors associated with PonyoMedium
