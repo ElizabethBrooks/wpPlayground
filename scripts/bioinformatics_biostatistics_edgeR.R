@@ -144,10 +144,6 @@ summary(decideTests(tested_4h))
 plotMD(tested_4h)
 abline(h=c(-1, 1), col="blue")
 
-#Make a mean-difference plot of two libraries of count data with smearing of points
-#  with very low counts, especially those that are zero for one of the columns
-plotSmear(tested_4h)
-
 #Identify significantly DE genes
 resultsTbl_4h$topDE <- "NA"
 resultsTbl_4h$topDE[resultsTbl_4h$logFC > 1 & resultsTbl_4h$FDR < 0.05] <- "UP"
@@ -184,10 +180,6 @@ summary(decideTests(tested_24h))
 #The blue lines indicate 2-fold changes
 plotMD(tested_24h)
 abline(h=c(-1, 1), col="blue")
-
-#Make a mean-difference plot of two libraries of count data with smearing of points
-#  with very low counts, especially those that are zero for one of the columns
-plotSmear(tested_24h)
 
 #Identify significantly DE genes
 resultsTbl_24h$topDE <- "NA"
@@ -226,10 +218,6 @@ summary(decideTests(tested_treat))
 plotMD(tested_treat)
 abline(h=c(-1, 1), col="blue")
 
-#Make a mean-difference plot of two libraries of count data with smearing of points
-#  with very low counts, especially those that are zero for one of the columns
-plotSmear(tested_treat)
-
 #Identify significantly DE genes
 resultsTbl_treat$topDE <- "NA"
 resultsTbl_treat$topDE[resultsTbl_treat$logFC > 1 & resultsTbl_treat$FDR < 0.05] <- "UP"
@@ -266,10 +254,6 @@ summary(decideTests(tested_cntrl))
 #The blue lines indicate 2-fold changes
 plotMD(tested_cntrl)
 abline(h=c(-1, 1), col="blue")
-
-#Make a mean-difference plot of two libraries of count data with smearing of points
-#  with very low counts, especially those that are zero for one of the columns
-plotSmear(tested_cntrl)
 
 #Identify significantly DE genes
 resultsTbl_nctrl$topDE <- "NA"
