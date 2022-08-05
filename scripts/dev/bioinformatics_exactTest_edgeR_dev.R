@@ -27,14 +27,20 @@ group <- factor(c(rep("cntrl_4h",3), rep("treat_4h",3), rep("cntrl_24h",3), rep(
 #Create DGE list object
 list <- DGEList(counts=tribolium_counts,group=group)
 
-# view available palettes
+# change the graphical parameters
 par(mfrow=c(9,3))
+
+# view all available ghibli palettes
 for(i in names(ghibli_palettes)) print(ghibli_palette(i))
+
+# close the plot and return the display to the default graphical parameters
 dev.off()
 
 # retrieve the vector of colors associated with PonyoMedium
 ghibli_colors <- ghibli_palette("PonyoMedium", type = "discrete")
-ghibli_subset <- c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4])
+
+# view the selected color palette
+ghibli_colors
 
 
 ##
@@ -100,6 +106,9 @@ dev.off()
 # Pairwise Tests
 ##
 
+# vector with a subset of colors associated with PonyoMedium
+ghibli_subset <- c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4])
+
 ##
 #Perform an exact test for treat_4h vs ctrl_4h
 tested_4h <- exactTest(list, pair=c("cntrl_4h", "treat_4h"))
@@ -126,12 +135,6 @@ summary(decideTests(tested_4h))
 jpeg("plots/dev/exactTest_4h_DE.jpg")
 plotMD(tested_4h)
 abline(h=c(-1, 1), col="blue")
-dev.off()
-
-#Make a mean-difference plot of two libraries of count data with smearing of points
-#  with very low counts, especially those that are zero for one of the columns
-jpeg("plots/dev/exactTest_4h_smear.jpg")
-plotSmear(tested_4h)
 dev.off()
 
 #Identify significantly DE genes
@@ -175,12 +178,6 @@ plotMD(tested_24h)
 abline(h=c(-1, 1), col="blue")
 dev.off()
 
-#Make a mean-difference plot of two libraries of count data with smearing of points
-#  with very low counts, especially those that are zero for one of the columns
-jpeg("plots/dev/exactTest_24h_smear.jpg")
-plotSmear(tested_24h)
-dev.off()
-
 #Identify significantly DE genes
 resultsTbl_24h$topDE <- "NA"
 resultsTbl_24h$topDE[resultsTbl_24h$logFC > 1 & resultsTbl_24h$FDR < 0.05] <- "UP"
@@ -222,12 +219,6 @@ plotMD(tested_treat)
 abline(h=c(-1, 1), col="blue")
 dev.off()
 
-#Make a mean-difference plot of two libraries of count data with smearing of points
-#  with very low counts, especially those that are zero for one of the columns
-jpeg("plots/dev/exactTest_treat_smear.jpg")
-plotSmear(tested_treat)
-dev.off()
-
 #Identify significantly DE genes
 resultsTbl_treat$topDE <- "NA"
 resultsTbl_treat$topDE[resultsTbl_treat$logFC > 1 & resultsTbl_treat$FDR < 0.05] <- "UP"
@@ -241,7 +232,7 @@ ggplot(data=resultsTbl_treat, aes(x=logFC, y=-log10(FDR), color = topDE)) +
   scale_colour_discrete(type = ghibli_subset)
 dev.off()
 
-##############
+##
 #Perform an exact test for cntrl_4h vs ctrl_24h
 tested_cntrl <- exactTest(list, pair=c("cntrl_24h", "cntrl_4h"))
 
@@ -267,12 +258,6 @@ summary(decideTests(tested_cntrl))
 jpeg("plots/dev/exactTest_cntrl_DE.jpg")
 plotMD(tested_cntrl)
 abline(h=c(-1, 1), col="blue")
-dev.off()
-
-#Make a mean-difference plot of two libraries of count data with smearing of points
-#  with very low counts, especially those that are zero for one of the columns
-jpeg("plots/dev/exactTest_cntrl_smear.jpg")
-plotSmear(tested_cntrl)
 dev.off()
 
 #Identify significantly DE genes

@@ -126,7 +126,7 @@ tested_4h <- exactTest(list, pair=c("cntrl_4h", "treat_4h"))
 resultsTbl_4h <- topTags(tested_4h, n=nrow(tested_4h$table))$table
 
 #Create a table of DE genes filtered by FDR
-resultsTbl_4h.keep <- resultsTbl_4h$FDR <= 0.05
+resultsTbl_4h.keep <- resultsTbl_4h$FDR < 0.05
 resultsTbl_4h_filtered <- resultsTbl_4h[resultsTbl_4h.keep,]
 
 #Write the results of the exact tests to a csv file
@@ -163,7 +163,7 @@ tested_24h <- exactTest(list, pair=c("cntrl_24h", "treat_24h"))
 resultsTbl_24h <- topTags(tested_24h, n=nrow(tested_24h$table))$table
 
 #Create filtered results table of DE genes
-resultsTbl_24h.keep <- resultsTbl_24h$FDR <= 0.05
+resultsTbl_24h.keep <- resultsTbl_24h$FDR < 0.05
 resultsTbl_24h_filtered <- resultsTbl_24h[resultsTbl_24h.keep,]
 
 #Write the results of the exact tests to a csv file
@@ -200,7 +200,7 @@ tested_treat <- exactTest(list, pair=c("treat_24h", "treat_4h"))
 resultsTbl_treat <- topTags(tested_treat, n=nrow(tested_treat$table))$table
 
 #Create filtered results table of DE genes
-resultsTbl_treat.keep <- resultsTbl_treat$FDR <= 0.05
+resultsTbl_treat.keep <- resultsTbl_treat$FDR < 0.05
 resultsTbl_treat_filtered <- resultsTbl_treat[resultsTbl_treat.keep,]
 
 #Write the results of the exact tests to a csv file
@@ -237,7 +237,7 @@ tested_cntrl <- exactTest(list, pair=c("cntrl_24h", "cntrl_4h"))
 resultsTbl_nctrl <- topTags(tested_cntrl, n=nrow(tested_cntrl$table))$table
 
 #Create filtered results table of DE genes
-resultsTbl_ctrl.keep <- resultsTbl_nctrl$FDR <= 0.05
+resultsTbl_ctrl.keep <- resultsTbl_nctrl$FDR < 0.05
 resultsTbl_cntrl_filtered <- resultsTbl_nctrl[resultsTbl_ctrl.keep,]
 
 #Write the results of the exact tests to a csv file
