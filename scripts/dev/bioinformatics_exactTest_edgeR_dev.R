@@ -62,16 +62,19 @@ write.table(normList, file="data/tribolium_normalizedCounts.csv", sep=",", row.n
 #View normalization factors
 list$samples
 
-#Use a MDS plot to visualizes the differences
-# between the expression profiles of different samples
-points <- c(0,1,2,3,15,16,17,18)
-colors <- rep(c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4], ghibli_colors[1]), 2)
+# vector of shape numbers for the MDS plot
+points <- c(0,1,15,16)
 
-# Add extra space to right of plot area; change clipping to figure
+# vector of colors for the MDS plot
+colors <- rep(c(ghibli_colors[3], ghibli_colors[6]), 2)
+
+# MDS plot with distances approximating log2 fold changes
 jpeg("plots/dev/exactTest_MDS.jpg")
+# add extra space to right of plot area and change clipping to figure
 par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
 plotMDS(list, col=colors[group], pch=points[group])
-legend("topright", inset=c(-0.28,0), legend=levels(group), pch=points, col=colors)
+# place the legend outside the right side of the plot
+legend("topright", inset=c(-0.5,0), legend=levels(group), pch=points, col=colors, ncol=2)
 dev.off()
 
 #Calculate the log CPM of the gene count data

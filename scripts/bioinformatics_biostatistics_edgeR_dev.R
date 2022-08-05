@@ -74,10 +74,10 @@ normList <- cpm(list, normalized.lib.sizes=TRUE)
 write.table(normList, file="tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
 
 # vector of shape numbers for the MDS plot
-points <- c(0,1,2,3,15,16,17,18)
+points <- c(0,1,15,16)
 
 # vector of colors for the MDS plot
-colors <- rep(c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4], ghibli_colors[1]), 2)
+colors <- rep(c(ghibli_colors[3], ghibli_colors[6]), 2)
 
 # MDS plot with distances approximating log2 fold changes
 jpeg("exactTest_MDS.jpg")
@@ -85,7 +85,7 @@ jpeg("exactTest_MDS.jpg")
 par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
 plotMDS(list, col=colors[group], pch=points[group])
 # place the legend outside the right side of the plot
-legend("topright", inset=c(-0.28,0), legend=levels(group), pch=points, col=colors)
+legend("topright", inset=c(-0.5,0), legend=levels(group), pch=points, col=colors, ncol=2)
 dev.off()
 
 # calculate the log CPM of the gene count data
