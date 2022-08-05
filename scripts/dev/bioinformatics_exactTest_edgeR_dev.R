@@ -23,6 +23,9 @@ tribolium_counts <- read.csv("data/TriboliumCounts.csv", row.names="X")
 #Add grouping factor
 group <- factor(c(rep("cntrl_4h",3), rep("treat_4h",3), rep("cntrl_24h",3), rep("treat_24h",3)))
 
+#Create DGE list object
+list <- DGEList(counts=tribolium_counts,group=group)
+
 # view available palettes
 par(mfrow=c(9,3))
 for(i in names(ghibli_palettes)) print(ghibli_palette(i))
@@ -32,12 +35,10 @@ dev.off()
 ghibli_colors <- ghibli_palette("PonyoMedium", type = "discrete")
 ghibli_subset <- c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4])
 
+
 ##
 # Normalization
 ##
-
-#Create DGE list object
-list <- DGEList(counts=tribolium_counts,group=group)
 
 #Plot the library sizes before normalization and write to a jpg file
 jpeg("plots/dev/exactTest_librarySizes.jpg")
