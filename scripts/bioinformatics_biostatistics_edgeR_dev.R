@@ -42,6 +42,9 @@ dev.off()
 # retrieve the vector of colors associated with PonyoMedium
 ghibli_colors <- ghibli_palette("PonyoMedium", type = "discrete")
 
+# view the selected color palette
+ghibli_colors
+
 
 ##
 # Normalization
