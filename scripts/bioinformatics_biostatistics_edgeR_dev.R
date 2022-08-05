@@ -3,25 +3,36 @@
 ##
 
 # set the working directory
-#setwd("/YOUR/FILE/PATH/")
-setwd("/Users/bamflappy/Repos/wpPlayground/")
+setwd("/YOUR/FILE/PATH/")
 
-# install libraries, if necessary
-#https://github.com/ewenme/ghibli
-#BiocManager::install("edgeR")
-#install.packages("ggplot2")
-#install.packages("ghibli")
+# install BiocManager, if not already installed
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
 
-# import libraries
+# install edgeR using BiocManager, if not already installed
+BiocManager::install("edgeR")
+
+# install ggplot2 and ghibli, if not already installed
+install.packages("ggplot2")
+install.packages("ghibli")
+
+# import installed libraries
 library(edgeR)
 library(ggplot2)
 library(ghibli)
 
 # import gene count data
-tribolium_counts <- read.csv("data/TriboliumCounts.csv", row.names="X")
+tribolium_counts <- read.csv("TriboliumCounts.csv", row.names="X")
 
-#Add grouping factor
+# add grouping factor
 group <- factor(c(rep("cntrl_4h",3), rep("treat_4h",3), rep("cntrl_24h",3), rep("treat_24h",3)))
+
+# verify grouping factor ordering
+group
+colnames(tribolium_counts)
+
+#Create DGE list object
+list <- DGEList(counts=tribolium_counts,group=group)
 
 # view available palettes
 par(mfrow=c(9,3))
@@ -32,15 +43,13 @@ dev.off()
 ghibli_colors <- ghibli_palette("PonyoMedium", type = "discrete")
 ghibli_subset <- c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4])
 
+
 ##
 # Normalization
 ##
 
-#Create DGE list object
-list <- DGEList(counts=tribolium_counts,group=group)
-
 #Plot the library sizes before normalization and write to a jpg file
-jpeg("plots/dev/exactTest_librarySizes.jpg")
+jpeg("exactTest_librarySizes.jpg")
 barplot(list$samples$lib.size*1e-6, names=1:12, ylab="Library size (millions)")
 dev.off() 
 
@@ -55,7 +64,7 @@ list <- calcNormFactors(list)
 normList <- cpm(list, normalized.lib.sizes=TRUE)
 
 #Write the normalized counts to a file
-write.table(normList, file="data/tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
+write.table(normList, file="tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
 
 #View normalization factors
 list$samples
@@ -66,7 +75,7 @@ points <- c(0,1,2,3,15,16,17,18)
 colors <- rep(c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4], ghibli_colors[1]), 2)
 
 # Add extra space to right of plot area; change clipping to figure
-jpeg("plots/dev/exactTest_MDS.jpg")
+jpeg("exactTest_MDS.jpg")
 par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
 plotMDS(list, col=colors[group], pch=points[group])
 legend("topright", inset=c(-0.28,0), legend=levels(group), pch=points, col=colors)
@@ -77,7 +86,7 @@ logcpm <- cpm(list, log=TRUE)
 
 #Draw a heatmap of individual RNA-seq samples using moderated
 # log-counts-per-million after normalization
-jpeg("plots/dev/exactTest_hclust.jpg")
+jpeg("exactTest_hclust.jpg")
 heatmap(logcpm)
 dev.off()
 
@@ -86,7 +95,7 @@ dev.off()
 list <- estimateDisp(list)
 
 #View dispersion estimates and biological coefficient of variation
-jpeg("plots/dev/exactTest_BCV.jpg")
+jpeg("exactTest_BCV.jpg")
 plotBCV(list)
 dev.off()
 
@@ -107,7 +116,7 @@ resultsTbl_4h.keep <- resultsTbl_4h$FDR <= 0.05
 resultsTbl_4h_filtered <- resultsTbl_4h[resultsTbl_4h.keep,]
 
 #Write the results of the exact tests to a csv file
-write.table(resultsTbl_4h_filtered, file="data/exactTest_4h_filtered.csv", sep=",", row.names=TRUE)
+write.table(resultsTbl_4h_filtered, file="exactTest_4h_filtered.csv", sep=",", row.names=TRUE)
 
 #Look at the counts-per-million in individual samples for the top genes
 o <- order(tested_4h$table$PValue)
@@ -118,14 +127,14 @@ summary(decideTests(tested_4h))
 
 #Plot log-fold change against log-counts per million, with DE genes highlighted
 #The blue lines indicate 2-fold changes
-jpeg("plots/dev/exactTest_4h_DE.jpg")
+jpeg("exactTest_4h_DE.jpg")
 plotMD(tested_4h)
 abline(h=c(-1, 1), col="blue")
 dev.off()
 
 #Make a mean-difference plot of two libraries of count data with smearing of points
 #  with very low counts, especially those that are zero for one of the columns
-jpeg("plots/dev/exactTest_4h_smear.jpg")
+jpeg("exactTest_4h_smear.jpg")
 plotSmear(tested_4h)
 dev.off()
 
@@ -135,7 +144,7 @@ resultsTbl_4h$topDE[resultsTbl_4h$logFC > 1 & resultsTbl_4h$FDR < 0.05] <- "UP"
 resultsTbl_4h$topDE[resultsTbl_4h$logFC < -1 & resultsTbl_4h$FDR < 0.05] <- "DOWN"
 
 #Create volcano plot
-jpeg("plots/dev/exactTest_4h_volcano.jpg")
+jpeg("exactTest_4h_volcano.jpg")
 ggplot(data=resultsTbl_4h, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
   geom_point() +
   theme_minimal() +
@@ -154,7 +163,7 @@ resultsTbl_24h.keep <- resultsTbl_24h$FDR <= 0.05
 resultsTbl_24h_filtered <- resultsTbl_24h[resultsTbl_24h.keep,]
 
 #Write the results of the exact tests to a csv file
-write.table(resultsTbl_24h_filtered, file="data/exactTest_24h_filtered.csv", sep=",", row.names=TRUE)
+write.table(resultsTbl_24h_filtered, file="exactTest_24h_filtered.csv", sep=",", row.names=TRUE)
 
 #Look at the counts-per-million in individual samples for the top genes
 o <- order(tested_24h$table$PValue)
@@ -165,14 +174,14 @@ summary(decideTests(tested_24h))
 
 #Plot log-fold change against log-counts per million, with DE genes highlighted
 #The blue lines indicate 2-fold changes
-jpeg("plots/dev/exactTest_24h_DE.jpg")
+jpeg("exactTest_24h_DE.jpg")
 plotMD(tested_24h)
 abline(h=c(-1, 1), col="blue")
 dev.off()
 
 #Make a mean-difference plot of two libraries of count data with smearing of points
 #  with very low counts, especially those that are zero for one of the columns
-jpeg("plots/dev/exactTest_24h_smear.jpg")
+jpeg("exactTest_24h_smear.jpg")
 plotSmear(tested_24h)
 dev.off()
 
@@ -182,7 +191,7 @@ resultsTbl_24h$topDE[resultsTbl_24h$logFC > 1 & resultsTbl_24h$FDR < 0.05] <- "U
 resultsTbl_24h$topDE[resultsTbl_24h$logFC < -1 & resultsTbl_24h$FDR < 0.05] <- "DOWN"
 
 #Create volcano plot
-jpeg("plots/dev/exactTest_24h_volcano.jpg")
+jpeg("exactTest_24h_volcano.jpg")
 ggplot(data=resultsTbl_24h, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
   geom_point() +
   theme_minimal() +
@@ -201,7 +210,7 @@ resultsTbl_treat.keep <- resultsTbl_treat$FDR <= 0.05
 resultsTbl_treat_filtered <- resultsTbl_treat[resultsTbl_treat.keep,]
 
 #Write the results of the exact tests to a csv file
-write.table(resultsTbl_treat_filtered, file="data/exactTest_treat_filtered.csv", sep=",", row.names=TRUE)
+write.table(resultsTbl_treat_filtered, file="exactTest_treat_filtered.csv", sep=",", row.names=TRUE)
 
 #Look at the counts-per-million in individual samples for the top genes
 o <- order(tested_treat$table$PValue)
@@ -212,14 +221,14 @@ summary(decideTests(tested_treat))
 
 #Plot log-fold change against log-counts per million, with DE genes highlighted
 #The blue lines indicate 2-fold changes
-jpeg("plots/dev/exactTest_treat_DE.jpg")
+jpeg("exactTest_treat_DE.jpg")
 plotMD(tested_treat)
 abline(h=c(-1, 1), col="blue")
 dev.off()
 
 #Make a mean-difference plot of two libraries of count data with smearing of points
 #  with very low counts, especially those that are zero for one of the columns
-jpeg("plots/dev/exactTest_treat_smear.jpg")
+jpeg("exactTest_treat_smear.jpg")
 plotSmear(tested_treat)
 dev.off()
 
@@ -229,7 +238,7 @@ resultsTbl_treat$topDE[resultsTbl_treat$logFC > 1 & resultsTbl_treat$FDR < 0.05]
 resultsTbl_treat$topDE[resultsTbl_treat$logFC < -1 & resultsTbl_treat$FDR < 0.05] <- "DOWN"
 
 #Create volcano plot
-jpeg("plots/dev/exactTest_treat_volcano.jpg")
+jpeg("exactTest_treat_volcano.jpg")
 ggplot(data=resultsTbl_treat, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
   geom_point() +
   theme_minimal() +
@@ -248,7 +257,7 @@ resultsTbl_ctrl.keep <- resultsTbl_nctrl$FDR <= 0.05
 resultsTbl_cntrl_filtered <- resultsTbl_nctrl[resultsTbl_ctrl.keep,]
 
 #Write the results of the exact tests to a csv file
-write.table(resultsTbl_cntrl_filtered, file="data/exactTest_cntrl_filtered.csv", sep=",", row.names=TRUE)
+write.table(resultsTbl_cntrl_filtered, file="exactTest_cntrl_filtered.csv", sep=",", row.names=TRUE)
 
 #Look at the counts-per-million in individual samples for the top genes
 o <- order(tested_cntrl$table$PValue)
@@ -259,14 +268,14 @@ summary(decideTests(tested_cntrl))
 
 #Plot log-fold change against log-counts per million, with DE genes highlighted
 #The blue lines indicate 2-fold changes
-jpeg("plots/dev/exactTest_cntrl_DE.jpg")
+jpeg("exactTest_cntrl_DE.jpg")
 plotMD(tested_cntrl)
 abline(h=c(-1, 1), col="blue")
 dev.off()
 
 #Make a mean-difference plot of two libraries of count data with smearing of points
 #  with very low counts, especially those that are zero for one of the columns
-jpeg("plots/dev/exactTest_cntrl_smear.jpg")
+jpeg("exactTest_cntrl_smear.jpg")
 plotSmear(tested_cntrl)
 dev.off()
 
@@ -276,7 +285,7 @@ resultsTbl_nctrl$topDE[resultsTbl_nctrl$logFC > 1 & resultsTbl_nctrl$FDR < 0.05]
 resultsTbl_nctrl$topDE[resultsTbl_nctrl$logFC < -1 & resultsTbl_nctrl$FDR < 0.05] <- "DOWN"
 
 #Create volcano plot
-jpeg("plots/dev/exactTest_cntrl_volcano.jpg")
+jpeg("exactTest_cntrl_volcano.jpg")
 ggplot(data=resultsTbl_nctrl, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
   geom_point() +
   theme_minimal() +
