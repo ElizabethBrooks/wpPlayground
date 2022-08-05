@@ -7,7 +7,8 @@
 setwd("/Users/bamflappy/Repos/wpPlayground/")
 
 # install libraries, if necessary
-#https://github.com/ewenme/ghibli
+#if (!require("BiocManager", quietly = TRUE))
+#  install.packages("BiocManager")
 #BiocManager::install("edgeR")
 #install.packages("ggplot2")
 #install.packages("ghibli")
