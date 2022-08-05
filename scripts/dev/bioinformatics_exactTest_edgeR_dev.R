@@ -74,7 +74,7 @@ jpeg("plots/dev/exactTest_MDS.jpg")
 par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
 plotMDS(list, col=colors[group], pch=points[group])
 # place the legend outside the right side of the plot
-legend("topright", inset=c(-0.5,0), legend=levels(group), pch=points, col=colors, ncol=2)
+legend("topright", inset=c(-0.4,0), legend=levels(group), pch=points, col=colors)
 dev.off()
 
 #Calculate the log CPM of the gene count data

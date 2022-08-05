@@ -74,6 +74,11 @@ normList <- cpm(list, normalized.lib.sizes=TRUE)
 # write the normalized counts to a csv file
 write.table(normList, file="tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
 
+
+##
+# Data Exploration
+##
+
 # vector of shape numbers for the MDS plot
 points <- c(0,1,15,16)
 
@@ -82,10 +87,12 @@ colors <- rep(c(ghibli_colors[3], ghibli_colors[6]), 2)
 
 # add extra space to right of plot area and change clipping to figure
 par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
+
 # MDS plot with distances approximating log2 fold changes
 plotMDS(list, col=colors[group], pch=points[group])
+
 # place the legend outside the right side of the plot
-legend("topright", inset=c(-0.5,0), legend=levels(group), pch=points, col=colors, ncol=2)
+legend("topright", inset=c(-0.4,0), legend=levels(group), pch=points, col=colors)
 
 # calculate the log CPM of the gene count data
 logcpm <- cpm(list, log=TRUE)
