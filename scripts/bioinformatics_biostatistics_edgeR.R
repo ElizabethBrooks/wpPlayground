@@ -122,20 +122,6 @@ ghibli_subset <- c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4])
 #Perform an exact test for treat_4h vs ctrl_4h
 tested_4h <- exactTest(list, pair=c("cntrl_4h", "treat_4h"))
 
-#Create results table of DE genes
-resultsTbl_4h <- topTags(tested_4h, n=nrow(tested_4h$table))$table
-
-#Create a table of DE genes filtered by FDR
-resultsTbl_4h.keep <- resultsTbl_4h$FDR < 0.05
-resultsTbl_4h_filtered <- resultsTbl_4h[resultsTbl_4h.keep,]
-
-#Write the results of the exact tests to a csv file
-write.table(resultsTbl_4h_filtered, file="exactTest_4h_filtered.csv", sep=",", row.names=TRUE)
-
-#Look at the counts-per-million in individual samples for the top genes
-o <- order(tested_4h$table$PValue)
-cpm(list)[o[1:10],]
-
 #View the total number of differentially expressed genes at a p-value of 0.05
 summary(decideTests(tested_4h))
 
@@ -143,6 +129,9 @@ summary(decideTests(tested_4h))
 #The blue lines indicate 2-fold changes
 plotMD(tested_4h)
 abline(h=c(-1, 1), col="blue")
+
+#Create results table of DE genes
+resultsTbl_4h <- topTags(tested_4h, n=nrow(tested_4h$table))$table
 
 #Identify significantly DE genes
 resultsTbl_4h$topDE <- "NA"
@@ -155,23 +144,16 @@ ggplot(data=resultsTbl_4h, aes(x=logFC, y=-log10(FDR), color = topDE)) +
   theme_minimal() +
   scale_colour_discrete(type = ghibli_subset)
 
+#Create a table of DE genes filtered by FDR
+resultsTbl_4h.keep <- resultsTbl_4h$FDR < 0.05
+resultsTbl_4h_filtered <- resultsTbl_4h[resultsTbl_4h.keep,]
+
+#Write the results of the exact tests to a csv file
+write.table(resultsTbl_4h_filtered, file="exactTest_4h_filtered.csv", sep=",", row.names=TRUE)
+
 ##
 #Perform an exact test for treat_24h vs ctrl_24h
 tested_24h <- exactTest(list, pair=c("cntrl_24h", "treat_24h"))
-
-#Create a table of DE genes filtered by FDR
-resultsTbl_24h <- topTags(tested_24h, n=nrow(tested_24h$table))$table
-
-#Create filtered results table of DE genes
-resultsTbl_24h.keep <- resultsTbl_24h$FDR < 0.05
-resultsTbl_24h_filtered <- resultsTbl_24h[resultsTbl_24h.keep,]
-
-#Write the results of the exact tests to a csv file
-write.table(resultsTbl_24h_filtered, file="exactTest_24h_filtered.csv", sep=",", row.names=TRUE)
-
-#Look at the counts-per-million in individual samples for the top genes
-o <- order(tested_24h$table$PValue)
-cpm(list)[o[1:10],]
 
 #View the total number of differentially expressed genes at a p-value of 0.05
 summary(decideTests(tested_24h))
@@ -180,6 +162,9 @@ summary(decideTests(tested_24h))
 #The blue lines indicate 2-fold changes
 plotMD(tested_24h)
 abline(h=c(-1, 1), col="blue")
+
+#Create a table of DE genes filtered by FDR
+resultsTbl_24h <- topTags(tested_24h, n=nrow(tested_24h$table))$table
 
 #Identify significantly DE genes
 resultsTbl_24h$topDE <- "NA"
@@ -192,23 +177,16 @@ ggplot(data=resultsTbl_24h, aes(x=logFC, y=-log10(FDR), color = topDE)) +
   theme_minimal() +
   scale_colour_discrete(type = ghibli_subset)
 
+#Create filtered results table of DE genes
+resultsTbl_24h.keep <- resultsTbl_24h$FDR < 0.05
+resultsTbl_24h_filtered <- resultsTbl_24h[resultsTbl_24h.keep,]
+
+#Write the results of the exact tests to a csv file
+write.table(resultsTbl_24h_filtered, file="exactTest_24h_filtered.csv", sep=",", row.names=TRUE)
+
 ##
 #Perform an exact test for treat_4h vs treat_24h
 tested_treat <- exactTest(list, pair=c("treat_24h", "treat_4h"))
-
-#Create a table of DE genes filtered by FDR
-resultsTbl_treat <- topTags(tested_treat, n=nrow(tested_treat$table))$table
-
-#Create filtered results table of DE genes
-resultsTbl_treat.keep <- resultsTbl_treat$FDR < 0.05
-resultsTbl_treat_filtered <- resultsTbl_treat[resultsTbl_treat.keep,]
-
-#Write the results of the exact tests to a csv file
-write.table(resultsTbl_treat_filtered, file="exactTest_treat_filtered.csv", sep=",", row.names=TRUE)
-
-#Look at the counts-per-million in individual samples for the top genes
-o <- order(tested_treat$table$PValue)
-cpm(list)[o[1:10],]
 
 #View the total number of differentially expressed genes at a p-value of 0.05
 summary(decideTests(tested_treat))
@@ -217,6 +195,9 @@ summary(decideTests(tested_treat))
 #The blue lines indicate 2-fold changes
 plotMD(tested_treat)
 abline(h=c(-1, 1), col="blue")
+
+#Create a table of DE genes filtered by FDR
+resultsTbl_treat <- topTags(tested_treat, n=nrow(tested_treat$table))$table
 
 #Identify significantly DE genes
 resultsTbl_treat$topDE <- "NA"
@@ -229,23 +210,16 @@ ggplot(data=resultsTbl_treat, aes(x=logFC, y=-log10(FDR), color = topDE)) +
   theme_minimal() +
   scale_colour_discrete(type = ghibli_subset)
 
+#Create filtered results table of DE genes
+resultsTbl_treat.keep <- resultsTbl_treat$FDR < 0.05
+resultsTbl_treat_filtered <- resultsTbl_treat[resultsTbl_treat.keep,]
+
+#Write the results of the exact tests to a csv file
+write.table(resultsTbl_treat_filtered, file="exactTest_treat_filtered.csv", sep=",", row.names=TRUE)
+
 ##
 #Perform an exact test for cntrl_4h vs ctrl_24h
 tested_cntrl <- exactTest(list, pair=c("cntrl_24h", "cntrl_4h"))
-
-#Create a table of DE genes filtered by FDR
-resultsTbl_nctrl <- topTags(tested_cntrl, n=nrow(tested_cntrl$table))$table
-
-#Create filtered results table of DE genes
-resultsTbl_ctrl.keep <- resultsTbl_nctrl$FDR < 0.05
-resultsTbl_cntrl_filtered <- resultsTbl_nctrl[resultsTbl_ctrl.keep,]
-
-#Write the results of the exact tests to a csv file
-write.table(resultsTbl_cntrl_filtered, file="exactTest_cntrl_filtered.csv", sep=",", row.names=TRUE)
-
-#Look at the counts-per-million in individual samples for the top genes
-o <- order(tested_cntrl$table$PValue)
-cpm(list)[o[1:10],]
 
 #View the total number of differentially expressed genes at a p-value of 0.05
 summary(decideTests(tested_cntrl))
@@ -254,6 +228,9 @@ summary(decideTests(tested_cntrl))
 #The blue lines indicate 2-fold changes
 plotMD(tested_cntrl)
 abline(h=c(-1, 1), col="blue")
+
+#Create a table of DE genes filtered by FDR
+resultsTbl_nctrl <- topTags(tested_cntrl, n=nrow(tested_cntrl$table))$table
 
 #Identify significantly DE genes
 resultsTbl_nctrl$topDE <- "NA"
@@ -265,3 +242,10 @@ ggplot(data=resultsTbl_nctrl, aes(x=logFC, y=-log10(FDR), color = topDE)) +
   geom_point() +
   theme_minimal() +
   scale_colour_discrete(type = ghibli_subset)
+
+#Create filtered results table of DE genes
+resultsTbl_ctrl.keep <- resultsTbl_nctrl$FDR < 0.05
+resultsTbl_cntrl_filtered <- resultsTbl_nctrl[resultsTbl_ctrl.keep,]
+
+#Write the results of the exact tests to a csv file
+write.table(resultsTbl_cntrl_filtered, file="exactTest_cntrl_filtered.csv", sep=",", row.names=TRUE)
