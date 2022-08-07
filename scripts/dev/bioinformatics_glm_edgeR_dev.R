@@ -20,7 +20,7 @@ tribolium_counts <- read.csv("data/TriboliumCounts.csv", row.names="X")
 #countsTable <- head(inputTable, - 5)
 
 # import grouping factor
-targets <- read.csv(file="data/groupingFactors.csv")
+targets <- read.csv(file="data/groupingFactors_tribolium.csv")
 
 # view available palettes
 par(mfrow=c(9,3))
@@ -49,7 +49,7 @@ colnames(list) <- rownames(targets)
 head(list)
 
 #Plot the library sizes before normalization
-jpeg("plots/dev/glm_librarySizes.jpg")
+jpeg("plots/dev/glm_tribolium_librarySizes.jpg")
 barplot(list$samples$lib.size*1e-6, names=1:12, ylab="Library size (millions)")
 dev.off()
 
@@ -74,7 +74,7 @@ dim(list)
 
 #Verify TMM normalization using a MD plot
 # and write the plot to jpg file
-jpeg("plots/dev/glm_MD_afterNorm.jpg")
+jpeg("plots/dev/glm_tribolium_MD_afterNorm.jpg")
 plotMD(cpm(list, log=TRUE), column=1)
 abline(h=0, col="red", lty=2, lwd=2)
 dev.off()
@@ -85,12 +85,12 @@ points <- c(0,1,2,3,15,16,17,18)
 colors <- rep(c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4], ghibli_colors[1]), 2)
 
 #Write plot without legend to file
-jpeg("plots/dev/glm_MDS_withoutLegend.jpg")
+jpeg("plots/dev/glm_tribolium_MDS_withoutLegend.jpg")
 plotMDS(list, col=colors[group], pch=points[group])
 dev.off()
 
 #Write plot with legend to file
-jpeg("plots/dev/glm_MDS_withLegend.jpg")
+jpeg("plots/dev/glm_tribolium_MDS_withLegend.jpg")
 plotMDS(list, col=colors[group], pch=points[group])
 legend("topleft", legend=levels(group), pch=points, col=colors, ncol=2)
 dev.off()
@@ -107,7 +107,7 @@ list <- estimateDisp(list, design, robust=TRUE)
 
 #Visualize the dispersion estimates with a BCV plot
 #Write plot to file
-jpeg("glm_BCV.jpg")
+jpeg("glm_tribolium_BCV.jpg")
 plotBCV(list)
 dev.off()
 
@@ -116,7 +116,7 @@ fit <- glmQLFit(list, design, robust=TRUE)
 #head(fit$coefficients)
 
 #Write plot to file
-jpeg("glm_QLDisp.jpg")
+jpeg("glm_tribolium_QLDisp.jpg")
 plotQLDisp(fit)
 dev.off()
 
@@ -128,32 +128,32 @@ dev.off()
 ##
 #Test whether the average across all cntrl groups is equal to the average across
 #all treat groups, to examine the overall effect of treatment
-con.treat_cntrl <- makeContrasts(set.treat_cntrl = (treat.4h + treat.24h)/2
+con.treatment <- makeContrasts(set.treatment = (treat.4h + treat.24h)/2
                                  - (cntrl.4h + cntrl.24h)/2,
                                  levels=design)
 
 #Look at genes with significant expression across all UV groups
-anov.treat_cntrl <- glmTreat(fit, contrast=con.treat_cntrl, lfc=log2(1.2))
-summary(decideTests(anov.treat_cntrl))
+anov.treatment <- glmTreat(fit, contrast=con.treatment, lfc=log2(1.2))
+summary(decideTests(anov.treatment))
 
 #Write MD plot to file
-jpeg("plots/dev/glm_treat_cntrl_MD.jpg")
-plotMD(anov.treat_cntrl)
+jpeg("plots/dev/glm_tribolium_treatment_MD.jpg")
+plotMD(anov.treatment)
 abline(h=c(-1, 1), col="blue")
 dev.off()
 
 #Generate table of DE genes
-tagsTbl_treat_cntrl <- topTags(anov.treat_cntrl, n=nrow(anov.treat_cntrl$table), adjust.method="fdr")$table
-write.table(tagsTbl_treat_cntrl, file="data/glm_treat_cntrl.csv", sep=",", row.names=TRUE)
+tagsTbl_treatment <- topTags(anov.treatment, n=nrow(anov.treatment$table), adjust.method="fdr")$table
+write.table(tagsTbl_treatment, file="data/glm_tribolium_treatment.csv", sep=",", row.names=TRUE)
 
 #Identify significantly DE genes
-tagsTbl_treat_cntrl$topDE <- "NA"
-tagsTbl_treat_cntrl$topDE[tagsTbl_treat_cntrl$logFC > 1 & tagsTbl_treat_cntrl$FDR < 0.05] <- "UP"
-tagsTbl_treat_cntrl$topDE[tagsTbl_treat_cntrl$logFC < -1 & tagsTbl_treat_cntrl$FDR < 0.05] <- "DOWN"
+tagsTbl_treatment$topDE <- "NA"
+tagsTbl_treatment$topDE[tagsTbl_treatment$logFC > 1 & tagsTbl_treatment$FDR < 0.05] <- "UP"
+tagsTbl_treatment$topDE[tagsTbl_treatment$logFC < -1 & tagsTbl_treatment$FDR < 0.05] <- "DOWN"
 
 #Create volcano plot
-jpeg("plots/dev/glm_treat_cntrl_volcano.jpg")
-ggplot(data=tagsTbl_treat_cntrl, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
+jpeg("plots/dev/glm_tribolium_treatment_volcano.jpg")
+ggplot(data=tagsTbl_treatment, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
   geom_point() +
   theme_minimal() +
   scale_colour_discrete(type = ghibli_subset)
@@ -162,32 +162,32 @@ dev.off()
 ##
 #Test whether the average across all tolerant groups is equal to the average across
 #all not tolerant groups, to examine the overall effect of tolerance
-con.24h_4h <- makeContrasts(set.24h_4h = (cntrl.24h + treat.24h)/2
+con.hours <- makeContrasts(set.hours = (cntrl.24h + treat.24h)/2
                             - (cntrl.4h + treat.4h)/2,
                             levels=design)
 
 #Look at genes with significant expression across all UV groups
-anov.24h_4h <- glmTreat(fit, contrast=con.24h_4h, lfc=log2(1.2))
-summary(decideTests(anov.24h_4h))
+anov.hours <- glmTreat(fit, contrast=con.hours, lfc=log2(1.2))
+summary(decideTests(anov.hours))
 
 #Write plot to file
-jpeg("plots/dev/glm_24h_4h_MD.jpg")
-plotMD(anov.24h_4h)
+jpeg("plots/dev/glm_tribolium_hours_MD.jpg")
+plotMD(anov.hours)
 abline(h=c(-1, 1), col="blue")
 dev.off()
 
 #Generate table of DE genes
-tagsTbl_24h_4h <- topTags(anov.24h_4h, n=nrow(anov.24h_4h$table), adjust.method="fdr")$table
-write.table(tagsTbl_24h_4h, file="data/glm_24h_4h.csv", sep=",", row.names=TRUE)
+tagsTbl_hours <- topTags(anov.hours, n=nrow(anov.hours$table), adjust.method="fdr")$table
+write.table(tagsTbl_hours, file="data/glm_tribolium_hours.csv", sep=",", row.names=TRUE)
 
 #Identify significantly DE genes
-tagsTbl_24h_4h$topDE <- "NA"
-tagsTbl_24h_4h$topDE[tagsTbl_24h_4h$logFC > 1 & tagsTbl_24h_4h$FDR < 0.05] <- "UP"
-tagsTbl_24h_4h$topDE[tagsTbl_24h_4h$logFC < -1 & tagsTbl_24h_4h$FDR < 0.05] <- "DOWN"
+tagsTbl_hours$topDE <- "NA"
+tagsTbl_hours$topDE[tagsTbl_hours$logFC > 1 & tagsTbl_hours$FDR < 0.05] <- "UP"
+tagsTbl_hours$topDE[tagsTbl_hours$logFC < -1 & tagsTbl_hours$FDR < 0.05] <- "DOWN"
 
 #Create volcano plot
-jpeg("plots/dev/glm_24h_4h_volcano.jpg")
-ggplot(data=tagsTbl_24h_4h, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
+jpeg("plots/dev/glm_tribolium_hours_volcano.jpg")
+ggplot(data=tagsTbl_hours, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
   geom_point() +
   theme_minimal() +
   scale_colour_discrete(type = ghibli_subset)
@@ -206,14 +206,14 @@ anov.interaction <- glmTreat(fit, contrast=con.interaction, lfc=log2(1.2))
 summary(decideTests(anov.interaction))
 
 #Write plot to file
-jpeg("plots/dev/glm_interaction_MD.jpg")
+jpeg("plots/dev/glm_tribolium_interaction_MD.jpg")
 plotMD(anov.interaction)
 abline(h=c(-1, 1), col="blue")
 dev.off()
 
 #Generate table of DE genes
 tagsTbl_inter <- topTags(anov.interaction, n=nrow(anov.interaction$table), adjust.method="fdr")$table
-write.table(tagsTbl_inter, file="data/glm_interaction.csv", sep=",", row.names=TRUE)
+write.table(tagsTbl_inter, file="data/glm_tribolium_interaction.csv", sep=",", row.names=TRUE)
 
 #Identify significantly DE genes
 tagsTbl_inter$topDE <- "NA"
@@ -221,9 +221,34 @@ tagsTbl_inter$topDE[tagsTbl_inter$logFC > 1 & tagsTbl_inter$FDR < 0.05] <- "UP"
 tagsTbl_inter$topDE[tagsTbl_inter$logFC < -1 & tagsTbl_inter$FDR < 0.05] <- "DOWN"
 
 #Create volcano plot
-jpeg("plots/dev/glm_interaction_volcano.jpg")
+jpeg("plots/dev/glm_tribolium_interaction_volcano.jpg")
 ggplot(data=tagsTbl_inter, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
   geom_point() +
   theme_minimal() +
   scale_colour_discrete(type = ghibli_subset)
 dev.off()
+
+
+##
+# Pairwise Results Exploration
+##
+# retrieve set of DE gene names for 24h contrast
+geneSet_treatment <- rownames(tagsTbl_treatment)
+
+# retrieve set of DE gene names for treat contrast
+geneSet_hours <- rownames(tagsTbl_hours)
+
+# retrieve set of DE gene names for cntrl contrast
+geneSet_interaction <- rownames(tagsTbl_inter)
+
+# create combined list of DE gene names
+list_venn <- list(treatment = geneSet_treatment, 
+                  hours = geneSet_hours, 
+                  interaction = geneSet_interaction)
+
+# create venn diagram
+png("plots/dev/glm_tribolium_venn.png")
+ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("treatment","hours","interaction")) +
+  scale_color_brewer(palette = "Paired")
+dev.off()
+
