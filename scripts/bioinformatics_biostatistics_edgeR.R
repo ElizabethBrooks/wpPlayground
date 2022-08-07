@@ -101,7 +101,7 @@ par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
 plotMDS(list, col=colors[group], pch=points[group])
 
 # place the legend outside the right side of the plot
-legend("topright", inset=c(-0.4,0), legend=levels(group), pch=points, col=colors)
+legend("topright", inset=c(-0.3,0), legend=levels(group), pch=points, col=colors)
 
 # calculate the log CPM of the gene count data
 logcpm <- cpm(list, log=TRUE)
@@ -382,7 +382,7 @@ par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
 plotMDS(list, col=colors[group], pch=points[group])
 
 # place the legend outside the right side of the plot
-legend("topright", inset=c(-0.4,0), legend=levels(group), pch=points, col=colors)
+legend("topright", inset=c(-0.3,0), legend=levels(group), pch=points, col=colors)
 
 # calculate the log CPM of the gene count data
 logcpm <- cpm(list, log=TRUE)
