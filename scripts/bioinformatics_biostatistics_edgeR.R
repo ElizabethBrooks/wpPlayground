@@ -124,6 +124,11 @@ logcpm <- cpm(list, log=TRUE)
 # draw a heatmap of individual RNA-seq samples using moderated log CPM
 heatmap(logcpm)
 
+
+##
+# Negative Binomial Model
+##
+
 # estimate common dispersion and tagwise dispersions to produce a matrix of pseudo-counts
 list <- estimateDisp(list)
 
