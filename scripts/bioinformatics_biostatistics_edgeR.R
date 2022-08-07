@@ -112,140 +112,190 @@ plotBCV(list)
 
 
 ##
-# Pairwise Tests
+# Pairwise Test Contrasts
 ##
 
 # vector with a subset of colors associated with PonyoMedium
 ghibli_subset <- c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4])
 
-##
-#Perform an exact test for treat_4h vs ctrl_4h
+## treat_4h vs ctrl_4h
+# perform an exact test for treat_4h vs ctrl_4h
 tested_4h <- exactTest(list, pair=c("cntrl_4h", "treat_4h"))
 
-#View the total number of differentially expressed genes at a p-value of 0.05
+# view the total number of differentially expressed genes at a p-value of 0.05
 summary(decideTests(tested_4h))
 
-#Plot log-fold change against log-counts per million, with DE genes highlighted
-#The blue lines indicate 2-fold changes
+# plot log-fold change against log-counts per million with DE genes highlighted
 plotMD(tested_4h)
+
+# add blue lines to indicate 2-fold changes
 abline(h=c(-1, 1), col="blue")
 
-#Create results table of DE genes
+# create a results table of DE genes
 resultsTbl_4h <- topTags(tested_4h, n=nrow(tested_4h$table))$table
 
-#Identify significantly DE genes
+# add column for identifying direction of DE gene expression
 resultsTbl_4h$topDE <- "NA"
+
+# identify significantly up DE genes
 resultsTbl_4h$topDE[resultsTbl_4h$logFC > 1 & resultsTbl_4h$FDR < 0.05] <- "UP"
+
+# identify significantly down DE genes
 resultsTbl_4h$topDE[resultsTbl_4h$logFC < -1 & resultsTbl_4h$FDR < 0.05] <- "DOWN"
 
-#Create volcano plot
+# create volcano plot
 ggplot(data=resultsTbl_4h, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
   geom_point() +
   theme_minimal() +
-  scale_colour_discrete(type = ghibli_subset)
+  scale_colour_discrete(type = ghibli_subset, breaks = c("UP", "DOWN"))
 
-#Create a table of DE genes filtered by FDR
+# identify significantly DE genes by FDR
 resultsTbl_4h.keep <- resultsTbl_4h$FDR < 0.05
+
+# create filtered results table of DE genes
 resultsTbl_4h_filtered <- resultsTbl_4h[resultsTbl_4h.keep,]
 
-#Write the results of the exact tests to a csv file
+# write the filtered results of the exact tests to a csv file
 write.table(resultsTbl_4h_filtered, file="exactTest_4h_filtered.csv", sep=",", row.names=TRUE)
 
-##
-#Perform an exact test for treat_24h vs ctrl_24h
+## treat_24h vs ctrl_24h
+# perform an exact test for treat_24h vs ctrl_24h
 tested_24h <- exactTest(list, pair=c("cntrl_24h", "treat_24h"))
 
-#View the total number of differentially expressed genes at a p-value of 0.05
+# view the total number of differentially expressed genes at a p-value of 0.05
 summary(decideTests(tested_24h))
 
-#Plot log-fold change against log-counts per million, with DE genes highlighted
-#The blue lines indicate 2-fold changes
+# plot log-fold change against log-counts per million with DE genes highlighted
 plotMD(tested_24h)
+
+# add blue lines to indicate 2-fold changes
 abline(h=c(-1, 1), col="blue")
 
-#Create a table of DE genes filtered by FDR
+# create a results table of DE genes
 resultsTbl_24h <- topTags(tested_24h, n=nrow(tested_24h$table))$table
 
-#Identify significantly DE genes
+# add column for identifying direction of DE gene expression
 resultsTbl_24h$topDE <- "NA"
+
+# identify significantly up DE genes
 resultsTbl_24h$topDE[resultsTbl_24h$logFC > 1 & resultsTbl_24h$FDR < 0.05] <- "UP"
+
+# identify significantly down DE genes
 resultsTbl_24h$topDE[resultsTbl_24h$logFC < -1 & resultsTbl_24h$FDR < 0.05] <- "DOWN"
 
-#Create volcano plot
+# create volcano plot
 ggplot(data=resultsTbl_24h, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
   geom_point() +
   theme_minimal() +
-  scale_colour_discrete(type = ghibli_subset)
+  scale_colour_discrete(type = ghibli_subset, breaks = c("UP", "DOWN"))
 
-#Create filtered results table of DE genes
+# identify significantly DE genes by FDR
 resultsTbl_24h.keep <- resultsTbl_24h$FDR < 0.05
+
+# create filtered results table of DE genes
 resultsTbl_24h_filtered <- resultsTbl_24h[resultsTbl_24h.keep,]
 
-#Write the results of the exact tests to a csv file
+# write the filtered results of the exact tests to a csv file
 write.table(resultsTbl_24h_filtered, file="exactTest_24h_filtered.csv", sep=",", row.names=TRUE)
 
-##
-#Perform an exact test for treat_4h vs treat_24h
+## treat_4h vs treat_24h
+# perform an exact test for treat_4h vs treat_24h
 tested_treat <- exactTest(list, pair=c("treat_24h", "treat_4h"))
 
-#View the total number of differentially expressed genes at a p-value of 0.05
+# view the total number of differentially expressed genes at a p-value of 0.05
 summary(decideTests(tested_treat))
 
-#Plot log-fold change against log-counts per million, with DE genes highlighted
-#The blue lines indicate 2-fold changes
+# plot log-fold change against log-counts per million with DE genes highlighted
 plotMD(tested_treat)
+
+# add blue lines to indicate 2-fold changes
 abline(h=c(-1, 1), col="blue")
 
-#Create a table of DE genes filtered by FDR
+# create a results table of DE genes
 resultsTbl_treat <- topTags(tested_treat, n=nrow(tested_treat$table))$table
 
-#Identify significantly DE genes
+# add column for identifying direction of DE gene expression
 resultsTbl_treat$topDE <- "NA"
+
+# identify significantly up DE genes
 resultsTbl_treat$topDE[resultsTbl_treat$logFC > 1 & resultsTbl_treat$FDR < 0.05] <- "UP"
+
+# identify significantly down DE genes
 resultsTbl_treat$topDE[resultsTbl_treat$logFC < -1 & resultsTbl_treat$FDR < 0.05] <- "DOWN"
 
-#Create volcano plot
+# create volcano plot
 ggplot(data=resultsTbl_treat, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
   geom_point() +
   theme_minimal() +
-  scale_colour_discrete(type = ghibli_subset)
+  scale_colour_discrete(type = ghibli_subset, breaks = c("UP", "DOWN"))
 
-#Create filtered results table of DE genes
+# identify significantly DE genes by FDR
 resultsTbl_treat.keep <- resultsTbl_treat$FDR < 0.05
+
+# create filtered results table of DE genes
 resultsTbl_treat_filtered <- resultsTbl_treat[resultsTbl_treat.keep,]
 
-#Write the results of the exact tests to a csv file
+# write the filtered results of the exact tests to a csv file
 write.table(resultsTbl_treat_filtered, file="exactTest_treat_filtered.csv", sep=",", row.names=TRUE)
 
-##
-#Perform an exact test for cntrl_4h vs ctrl_24h
+## cntrl_4h vs ctrl_24h
+# perform an exact test for cntrl_4h vs ctrl_24h
 tested_cntrl <- exactTest(list, pair=c("cntrl_24h", "cntrl_4h"))
 
-#View the total number of differentially expressed genes at a p-value of 0.05
+# view the total number of differentially expressed genes at a p-value of 0.05
 summary(decideTests(tested_cntrl))
 
-#Plot log-fold change against log-counts per million, with DE genes highlighted
-#The blue lines indicate 2-fold changes
+# plot log-fold change against log-counts per million with DE genes highlighted
 plotMD(tested_cntrl)
+
+# add blue lines to indicate 2-fold changes
 abline(h=c(-1, 1), col="blue")
 
-#Create a table of DE genes filtered by FDR
+# create a results table of DE genes
 resultsTbl_nctrl <- topTags(tested_cntrl, n=nrow(tested_cntrl$table))$table
 
-#Identify significantly DE genes
+# add column for identifying direction of DE gene expression
 resultsTbl_nctrl$topDE <- "NA"
+
+# identify significantly up DE genes
 resultsTbl_nctrl$topDE[resultsTbl_nctrl$logFC > 1 & resultsTbl_nctrl$FDR < 0.05] <- "UP"
+
+# identify significantly down DE genes
 resultsTbl_nctrl$topDE[resultsTbl_nctrl$logFC < -1 & resultsTbl_nctrl$FDR < 0.05] <- "DOWN"
 
-#Create volcano plot
+# create volcano plot
 ggplot(data=resultsTbl_nctrl, aes(x=logFC, y=-log10(FDR), color = topDE)) + 
   geom_point() +
   theme_minimal() +
-  scale_colour_discrete(type = ghibli_subset)
+  scale_colour_discrete(type = ghibli_subset, breaks = c("UP", "DOWN"))
 
-#Create filtered results table of DE genes
+# identify significantly DE genes by FDR
 resultsTbl_ctrl.keep <- resultsTbl_nctrl$FDR < 0.05
+
+# create filtered results table of DE genes
 resultsTbl_cntrl_filtered <- resultsTbl_nctrl[resultsTbl_ctrl.keep,]
 
-#Write the results of the exact tests to a csv file
+# write the filtered results of the exact tests to a csv file
 write.table(resultsTbl_cntrl_filtered, file="exactTest_cntrl_filtered.csv", sep=",", row.names=TRUE)
+
+
+##
+# Results Exploration
+##
+# retrieve set of DE gene names for 24h contrast
+geneSet_24h <- rownames(resultsTbl_24h_filtered)
+
+# retrieve set of DE gene names for treat contrast
+geneSet_treat <- rownames(resultsTbl_treat_filtered)
+
+# retrieve set of DE gene names for cntrl contrast
+geneSet_cntrl <- rownames(resultsTbl_cntrl_filtered)
+
+# create combined list of DE gene names
+list_venn <- list(h24 = geneSet_24h, 
+                  treat = geneSet_treat, 
+                  cntrl = geneSet_cntrl)
+
+# create venn diagram
+ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("24h","treat","cntrl")) +
+  scale_color_brewer(palette = "Paired")
