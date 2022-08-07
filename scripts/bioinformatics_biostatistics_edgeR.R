@@ -163,7 +163,7 @@ plotMD(tested_4h)
 abline(h=c(-1, 1), col="blue")
 
 # create a results table of DE genes
-resultsTbl_4h <- topTags(tested_4h, n=nrow(tested_4h$table))$table
+resultsTbl_4h <- topTags(tested_4h, n=nrow(tested_4h$table), adjust.method="fdr")$table
 
 # add column for identifying direction of DE gene expression
 resultsTbl_4h$topDE <- "NA"
@@ -206,7 +206,7 @@ plotMD(tested_24h)
 abline(h=c(-1, 1), col="blue")
 
 # create a results table of DE genes
-resultsTbl_24h <- topTags(tested_24h, n=nrow(tested_24h$table))$table
+resultsTbl_24h <- topTags(tested_24h, n=nrow(tested_24h$table), adjust.method="fdr")$table
 
 # add column for identifying direction of DE gene expression
 resultsTbl_24h$topDE <- "NA"
@@ -249,7 +249,7 @@ plotMD(tested_treat)
 abline(h=c(-1, 1), col="blue")
 
 # create a results table of DE genes
-resultsTbl_treat <- topTags(tested_treat, n=nrow(tested_treat$table))$table
+resultsTbl_treat <- topTags(tested_treat, n=nrow(tested_treat$table), adjust.method="fdr")$table
 
 # add column for identifying direction of DE gene expression
 resultsTbl_treat$topDE <- "NA"
@@ -292,7 +292,7 @@ plotMD(tested_cntrl)
 abline(h=c(-1, 1), col="blue")
 
 # create a results table of DE genes
-resultsTbl_ncntrl <- topTags(tested_cntrl, n=nrow(tested_cntrl$table))$table
+resultsTbl_ncntrl <- topTags(tested_cntrl, n=nrow(tested_cntrl$table), adjust.method="fdr")$table
 
 # add column for identifying direction of DE gene expression
 resultsTbl_ncntrl$topDE <- "NA"
