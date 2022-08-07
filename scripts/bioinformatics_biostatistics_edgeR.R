@@ -5,6 +5,7 @@
 # set the working directory
 setwd("/YOUR/FILE/PATH/")
 
+
 ##
 # Packages
 ##
@@ -22,6 +23,7 @@ library(edgeR)
 library(ggplot2)
 library(ghibli)
 library(ggVennDiagram)
+
 
 ##
 # Plotting Palettes
@@ -41,6 +43,10 @@ ghibli_colors <- ghibli_palette("PonyoMedium", type = "discrete")
 
 # view the selected color palette
 ghibli_colors
+
+# vector with a subset of colors associated with PonyoMedium
+ghibli_subset <- c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4])
+
 
 ##
 # Data
@@ -139,9 +145,6 @@ plotBCV(list)
 ##
 # Pairwise Contrasts
 ##
-
-# vector with a subset of colors associated with PonyoMedium
-ghibli_subset <- c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4])
 
 ### 
 ## treat_4h vs ctrl_4h
