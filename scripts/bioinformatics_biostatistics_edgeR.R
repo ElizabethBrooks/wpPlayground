@@ -591,7 +591,7 @@ write.table(normList, file="Tribolium_normalizedCounts.csv", sep=",", row.names=
 ## 
 # Saving Plots
 ##
-# save the plot to a file
+# save the glm results venn diagram plot to a file
 png("glm_tribolium_venn.png")
 ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("hours","interaction")) +
   scale_color_brewer(palette = "Paired")
