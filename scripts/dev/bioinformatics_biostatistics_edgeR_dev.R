@@ -74,9 +74,6 @@ list <- list[keep, , keep.lib.sizes=FALSE]
 list <- calcNormFactors(list)
 normList <- cpm(list, normalized.lib.sizes=TRUE)
 
-#Write the normalized counts to a file
-write.table(normList, file="data/exactTest_tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
-
 #View normalization factors
 list$samples
 
@@ -136,7 +133,7 @@ abline(h=c(-1, 1), col="blue")
 dev.off()
 
 #Create results table of DE genes
-resultsTbl_4h <- topTags(tested_4h, n=nrow(tested_4h$table))$table
+resultsTbl_4h <- topTags(tested_4h, n=nrow(tested_4h$table), adjust.method="fdr")$table
 
 #Identify significantly DE genes
 resultsTbl_4h$topDE <- "NA"
@@ -155,9 +152,6 @@ dev.off()
 resultsTbl_4h.keep <- resultsTbl_4h$FDR <= 0.05
 resultsTbl_4h_filtered <- resultsTbl_4h[resultsTbl_4h.keep,]
 
-#Write the results of the exact tests to a csv file
-write.table(resultsTbl_4h_filtered, file="data/exactTest_tribolium_4h_filtered.csv", sep=",", row.names=TRUE)
-
 ## treat_24h vs cntrl_24h
 #Perform an exact test for treat_24h vs cntrl_24h
 tested_24h <- exactTest(list, pair=c("cntrl_24h", "treat_24h"))
@@ -173,7 +167,7 @@ abline(h=c(-1, 1), col="blue")
 dev.off()
 
 #Create a table of DE genes filtered by FDR
-resultsTbl_24h <- topTags(tested_24h, n=nrow(tested_24h$table))$table
+resultsTbl_24h <- topTags(tested_24h, n=nrow(tested_24h$table), adjust.method="fdr")$table
 
 #Identify significantly DE genes
 resultsTbl_24h$topDE <- "NA"
@@ -192,9 +186,6 @@ dev.off()
 resultsTbl_24h.keep <- resultsTbl_24h$FDR <= 0.05
 resultsTbl_24h_filtered <- resultsTbl_24h[resultsTbl_24h.keep,]
 
-#Write the results of the exact tests to a csv file
-write.table(resultsTbl_24h_filtered, file="data/exactTest_tribolium_24h_filtered.csv", sep=",", row.names=TRUE)
-
 ## treat_4h vs treat_24h
 #Perform an exact test for treat_4h vs treat_24h
 tested_treat <- exactTest(list, pair=c("treat_24h", "treat_4h"))
@@ -210,7 +201,7 @@ abline(h=c(-1, 1), col="blue")
 dev.off()
 
 #Create a table of DE genes filtered by FDR
-resultsTbl_treat <- topTags(tested_treat, n=nrow(tested_treat$table))$table
+resultsTbl_treat <- topTags(tested_treat, n=nrow(tested_treat$table), adjust.method="fdr")$table
 
 #Identify significantly DE genes
 resultsTbl_treat$topDE <- "NA"
@@ -229,9 +220,6 @@ dev.off()
 resultsTbl_treat.keep <- resultsTbl_treat$FDR <= 0.05
 resultsTbl_treat_filtered <- resultsTbl_treat[resultsTbl_treat.keep,]
 
-#Write the results of the exact tests to a csv file
-write.table(resultsTbl_treat_filtered, file="data/exactTest_tribolium_treat_filtered.csv", sep=",", row.names=TRUE)
-
 ## cntrl_4h vs cntrl_24h
 #Perform an exact test for cntrl_4h vs cntrl_24h
 tested_cntrl <- exactTest(list, pair=c("cntrl_24h", "cntrl_4h"))
@@ -247,7 +235,7 @@ abline(h=c(-1, 1), col="blue")
 dev.off()
 
 #Create a table of DE genes filtered by FDR
-resultsTbl_nctrl <- topTags(tested_cntrl, n=nrow(tested_cntrl$table))$table
+resultsTbl_nctrl <- topTags(tested_cntrl, n=nrow(tested_cntrl$table), adjust.method="fdr")$table
 
 #Identify significantly DE genes
 resultsTbl_nctrl$topDE <- "NA"
@@ -265,10 +253,6 @@ dev.off()
 #Create filtered results table of DE genes
 resultsTbl_ctrl.keep <- resultsTbl_nctrl$FDR <= 0.05
 resultsTbl_cntrl_filtered <- resultsTbl_nctrl[resultsTbl_ctrl.keep,]
-
-#Write the results of the exact tests to a csv file
-write.table(resultsTbl_cntrl_filtered, file="data/exactTest_tribolium_cntrl_filtered.csv", sep=",", row.names=TRUE)
-
 
 ##
 # Pairwise Results Exploration
@@ -336,9 +320,6 @@ list <- calcNormFactors(list)
 
 # compute counts per million (CPM) using normalized library sizes
 normList <- cpm(list, normalized.lib.sizes=TRUE)
-
-# write the normalized counts to a file
-write.table(normList, file="data/glm_tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
 
 
 ##
@@ -423,9 +404,6 @@ dev.off()
 # generate table of DE genes
 tagsTbl_treatment <- topTags(anov.treatment, n=nrow(anov.treatment$table), adjust.method="fdr")$table
 
-# write filtered table to file
-write.table(tagsTbl_treatment, file="data/glm_tribolium_treatment.csv", sep=",", row.names=TRUE)
-
 # add column for identifying direction of DE gene expression
 tagsTbl_treatment$topDE <- "NA"
 
@@ -448,9 +426,6 @@ tagsTbl_treatment.keep <- tagsTbl_treatment$FDR < 0.05
 
 # create filtered results table of DE genes
 tagsTbl_treatment_filtered <- tagsTbl_treatment[tagsTbl_treatment.keep,]
-
-# write the filtered results of the exact tests to a csv file
-write.table(tagsTbl_treatment_filtered, file="data/glm_tribolium_treatment_filtered.csv", sep=",", row.names=TRUE)
 
 ## hours
 # examine the overall effect of hours
@@ -475,9 +450,6 @@ dev.off()
 # generate table of DE genes
 tagsTbl_hours <- topTags(anov.hours, n=nrow(anov.hours$table), adjust.method="fdr")$table
 
-# write results table to file
-write.table(tagsTbl_hours, file="data/glm_tribolium_hours.csv", sep=",", row.names=TRUE)
-
 # add column for identifying direction of DE gene expression
 tagsTbl_hours$topDE <- "NA"
 
@@ -500,9 +472,6 @@ tagsTbl_hours.keep <- tagsTbl_hours$FDR < 0.05
 
 # create filtered results table of DE genes
 tagsTbl_hours_filtered <- tagsTbl_hours[tagsTbl_hours.keep,]
-
-# write the filtered results of the exact tests to a csv file
-write.table(tagsTbl_hours_filtered, file="data/glm_tribolium_hours_filtered.csv", sep=",", row.names=TRUE)
 
 ## interaction
 # examine any interaction effect
@@ -529,9 +498,6 @@ dev.off()
 # generate table of DE genes
 tagsTbl_inter <- topTags(anov.interaction, n=nrow(anov.interaction$table), adjust.method="fdr")$table
 
-# write results table to file
-write.table(tagsTbl_inter, file="data/glm_tribolium_interaction.csv", sep=",", row.names=TRUE)
-
 # add column for identifying direction of DE gene expression
 tagsTbl_inter$topDE <- "NA"
 
@@ -555,9 +521,6 @@ tagsTbl_inter.keep <- tagsTbl_inter$FDR < 0.05
 # create filtered results table of DE genes
 tagsTbl_inter_filtered <- tagsTbl_inter[tagsTbl_inter.keep,]
 
-# write the filtered results of the exact tests to a csv file
-write.table(tagsTbl_inter_filtered, file="data/glm_tribolium_interaction_filtered.csv", sep=",", row.names=TRUE)
-
 
 ##
 # GLM Results Exploration
@@ -573,6 +536,21 @@ list_venn <- list(hours = geneSet_hours,
                   interaction = geneSet_interaction)
 
 # create venn diagram
+ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("hours","interaction")) +
+  scale_color_brewer(palette = "Paired")
+
+
+##
+# Saving Tables
+##
+# write the table of normalized counts to a file
+write.table(normList, file="data/Tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
+
+
+## 
+# Saving Plots
+##
+# save the plot to a file
 png("plots/dev/glm_tribolium_venn.png")
 ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("hours","interaction")) +
   scale_color_brewer(palette = "Paired")

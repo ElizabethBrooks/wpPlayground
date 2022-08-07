@@ -98,9 +98,6 @@ list$samples
 # compute counts per million (CPM) using normalized library sizes
 normList <- cpm(list, normalized.lib.sizes=TRUE)
 
-# write the normalized counts to a csv file
-write.table(normList, file="exactTest_tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
-
 
 ##
 # Pairwise Data Exploration
@@ -372,9 +369,6 @@ list <- calcNormFactors(list)
 # compute counts per million (CPM) using normalized library sizes
 normList <- cpm(list, normalized.lib.sizes=TRUE)
 
-# write the normalized counts to a file
-write.table(normList, file="data/glm_tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
-
 
 ##
 # GLM Data Exploration
@@ -454,9 +448,6 @@ abline(h=c(-1, 1), col="blue")
 # generate table of DE genes
 tagsTbl_treatment <- topTags(anov.treatment, n=nrow(anov.treatment$table), adjust.method="fdr")$table
 
-# write filtered table to file
-write.table(tagsTbl_treatment, file="data/glm_tribolium_treatment.csv", sep=",", row.names=TRUE)
-
 # add column for identifying direction of DE gene expression
 tagsTbl_treatment$topDE <- "NA"
 
@@ -501,9 +492,6 @@ abline(h=c(-1, 1), col="blue")
 
 # generate table of DE genes
 tagsTbl_hours <- topTags(anov.hours, n=nrow(anov.hours$table), adjust.method="fdr")$table
-
-# write results table to file
-write.table(tagsTbl_hours, file="data/glm_tribolium_hours.csv", sep=",", row.names=TRUE)
 
 # add column for identifying direction of DE gene expression
 tagsTbl_hours$topDE <- "NA"
@@ -552,9 +540,6 @@ abline(h=c(-1, 1), col="blue")
 # generate table of DE genes
 tagsTbl_inter <- topTags(anov.interaction, n=nrow(anov.interaction$table), adjust.method="fdr")$table
 
-# write results table to file
-write.table(tagsTbl_inter, file="data/glm_tribolium_interaction.csv", sep=",", row.names=TRUE)
-
 # add column for identifying direction of DE gene expression
 tagsTbl_inter$topDE <- "NA"
 
@@ -594,3 +579,20 @@ list_venn <- list(hours = geneSet_hours,
 # create venn diagram
 ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("hours","interaction")) +
   scale_color_brewer(palette = "Paired")
+
+
+##
+# Saving Tables
+##
+# write the table of normalized counts to a file
+write.table(normList, file="Tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
+
+
+## 
+# Saving Plots
+##
+# save the plot to a file
+png("glm_tribolium_venn.png")
+ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("hours","interaction")) +
+  scale_color_brewer(palette = "Paired")
+dev.off()
