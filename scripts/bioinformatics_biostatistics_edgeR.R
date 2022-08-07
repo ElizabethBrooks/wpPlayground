@@ -5,9 +5,9 @@
 # set the working directory
 setwd("/YOUR/FILE/PATH/")
 
-###
-## Packages
-###
+##
+# Packages
+##
 
 # install packages, if necessary
 if (!require("BiocManager", quietly = TRUE))
@@ -23,9 +23,9 @@ library(ggplot2)
 library(ghibli)
 library(ggVennDiagram)
 
-###
-## Plotting
-###
+##
+# Plotting Palettes
+##
 
 # change the graphical parameters
 par(mfrow=c(9,3))
@@ -42,9 +42,9 @@ ghibli_colors <- ghibli_palette("PonyoMedium", type = "discrete")
 # view the selected color palette
 ghibli_colors
 
-###
-## Data
-###
+##
+# Data
+##
 
 # import gene count data
 tribolium_counts <- read.csv("TriboliumCounts.csv", row.names="X")
