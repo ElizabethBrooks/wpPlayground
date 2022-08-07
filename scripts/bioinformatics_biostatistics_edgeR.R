@@ -5,7 +5,11 @@
 # set the working directory
 setwd("/YOUR/FILE/PATH/")
 
-# install libraries, if necessary
+##
+# Packages
+##
+
+# install packages, if necessary
 if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 BiocManager::install("edgeR")
@@ -18,6 +22,29 @@ library(edgeR)
 library(ggplot2)
 library(ghibli)
 library(ggVennDiagram)
+
+##
+# Plotting Palettes
+##
+
+# change the graphical parameters
+par(mfrow=c(9,3))
+
+# view all available ghibli palettes
+for(i in names(ghibli_palettes)) print(ghibli_palette(i))
+
+# close the plot and return the display to the default graphical parameters
+dev.off()
+
+# retrieve the vector of colors associated with PonyoMedium
+ghibli_colors <- ghibli_palette("PonyoMedium", type = "discrete")
+
+# view the selected color palette
+ghibli_colors
+
+##
+# Data
+##
 
 # import gene count data
 tribolium_counts <- read.csv("TriboliumCounts.csv", row.names="X")
@@ -38,21 +65,6 @@ colnames(tribolium_counts)
 
 # create DGE list object
 list <- DGEList(counts=tribolium_counts,group=group)
-
-# change the graphical parameters
-par(mfrow=c(9,3))
-
-# view all available ghibli palettes
-for(i in names(ghibli_palettes)) print(ghibli_palette(i))
-
-# close the plot and return the display to the default graphical parameters
-dev.off()
-
-# retrieve the vector of colors associated with PonyoMedium
-ghibli_colors <- ghibli_palette("PonyoMedium", type = "discrete")
-
-# view the selected color palette
-ghibli_colors
 
 
 ##
