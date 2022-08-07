@@ -26,6 +26,7 @@ tribolium_counts <- read.csv("TriboliumCounts.csv", row.names="X")
 ##
 # Pairwise Setup
 ##
+
 # add grouping factor
 group <- factor(c(rep("cntrl_4h",3), rep("treat_4h",3), rep("cntrl_24h",3), rep("treat_24h",3)))
 
@@ -122,7 +123,10 @@ plotBCV(list)
 # vector with a subset of colors associated with PonyoMedium
 ghibli_subset <- c(ghibli_colors[3], ghibli_colors[6], ghibli_colors[4])
 
+### 
 ## treat_4h vs ctrl_4h
+###
+
 # perform an exact test for treat_4h vs ctrl_4h
 tested_4h <- exactTest(list, pair=c("cntrl_4h", "treat_4h"))
 
@@ -162,7 +166,10 @@ resultsTbl_4h_filtered <- resultsTbl_4h[resultsTbl_4h.keep,]
 # write the filtered results of the exact tests to a csv file
 write.table(resultsTbl_4h_filtered, file="exactTest_tribolium_4h_filtered.csv", sep=",", row.names=TRUE)
 
+###
 ## treat_24h vs ctrl_24h
+###
+
 # perform an exact test for treat_24h vs ctrl_24h
 tested_24h <- exactTest(list, pair=c("cntrl_24h", "treat_24h"))
 
@@ -202,7 +209,10 @@ resultsTbl_24h_filtered <- resultsTbl_24h[resultsTbl_24h.keep,]
 # write the filtered results of the exact tests to a csv file
 write.table(resultsTbl_24h_filtered, file="exactTest_tribolium_24h_filtered.csv", sep=",", row.names=TRUE)
 
+###
 ## treat_4h vs treat_24h
+###
+
 # perform an exact test for treat_4h vs treat_24h
 tested_treat <- exactTest(list, pair=c("treat_24h", "treat_4h"))
 
@@ -242,7 +252,10 @@ resultsTbl_treat_filtered <- resultsTbl_treat[resultsTbl_treat.keep,]
 # write the filtered results of the exact tests to a csv file
 write.table(resultsTbl_treat_filtered, file="exactTest_tribolium_treat_filtered.csv", sep=",", row.names=TRUE)
 
+###
 ## cntrl_4h vs ctrl_24h
+###
+
 # perform an exact test for cntrl_4h vs ctrl_24h
 tested_cntrl <- exactTest(list, pair=c("cntrl_24h", "cntrl_4h"))
 
@@ -286,6 +299,7 @@ write.table(resultsTbl_cntrl_filtered, file="exactTest_tribolium_cntrl_filtered.
 ##
 # Pairwise Results Exploration
 ##
+
 # retrieve set of DE gene names for 24h contrast
 geneSet_24h <- rownames(resultsTbl_24h_filtered)
 
@@ -328,6 +342,7 @@ colnames(list) <- rownames(targets)
 ##
 # GLM Normalization
 ##
+
 # plot the library sizes before normalization
 barplot(list$samples$lib.size*1e-6, names=1:12, ylab="Library size (millions)")
 
@@ -401,7 +416,10 @@ plotQLDisp(fit)
 # GLM Contrasts
 ##
 
+###
 ## treatment
+###
+
 # examine the overall effect of treatment
 con.treatment <- makeContrasts(set.treatment = (treat.4h + treat.24h)/2
                                - (cntrl.4h + cntrl.24h)/2,
@@ -449,7 +467,10 @@ tagsTbl_treatment_filtered <- tagsTbl_treatment[tagsTbl_treatment.keep,]
 # write the filtered results of the exact tests to a csv file
 write.table(tagsTbl_treatment_filtered, file="glm_tribolium_treatment_filtered.csv", sep=",", row.names=TRUE)
 
+###
 ## hours
+###
+
 # examine the overall effect of hours
 con.hours <- makeContrasts(set.hours = (cntrl.24h + treat.24h)/2
                            - (cntrl.4h + treat.4h)/2,
@@ -497,7 +518,10 @@ tagsTbl_hours_filtered <- tagsTbl_hours[tagsTbl_hours.keep,]
 # write the filtered results of the exact tests to a csv file
 write.table(tagsTbl_hours_filtered, file="glm_tribolium_hours_filtered.csv", sep=",", row.names=TRUE)
 
+###
 ## interaction
+###
+
 # examine any interaction effect
 con.interaction <- makeContrasts(set.interaction = ((treat.4h + treat.24h)/2
                                                     - (cntrl.4h + cntrl.24h)/2)
@@ -551,6 +575,7 @@ write.table(tagsTbl_inter_filtered, file="glm_tribolium_interaction_filtered.csv
 ##
 # GLM Results Exploration
 ##
+
 # retrieve set of DE gene names for treat contrast
 geneSet_hours <- rownames(tagsTbl_hours_filtered)
 
