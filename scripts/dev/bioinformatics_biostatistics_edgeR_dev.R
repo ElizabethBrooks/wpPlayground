@@ -298,11 +298,6 @@ colnames(list) <- rownames(targets)
 ##
 # GLM Normalization
 ##
-# plot the library sizes before normalization and write to a png file
-png("plots/dev/glm_tribolium_librarySizes.png")
-barplot(list$samples$lib.size*1e-6, names=1:12, ylab="Library size (millions)")
-dev.off() 
-
 # filter the list of gene counts based on expression levels
 keep <- filterByExpr(list)
 
@@ -320,33 +315,8 @@ normList <- cpm(list, normalized.lib.sizes=TRUE)
 
 
 ##
-# GLM Data Exploration
+# GLM Fitting
 ##
-
-# vector of shape numbers for the MDS plot
-points <- c(0,1,15,16)
-
-# vector of colors for the MDS plot
-colors <- rep(c(ghibli_colors[3], ghibli_colors[6]), 2)
-
-# add extra space to right of plot area and change clipping to figure
-png("plots/dev/glm_tribolium_MDS.png")
-par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
-
-# MDS plot with distances approximating log2 fold changes
-plotMDS(list, col=colors[group], pch=points[group])
-
-# place the legend outside the right side of the plot
-legend("topright", inset=c(-0.3,0), legend=levels(group), pch=points, col=colors)
-dev.off()
-
-# calculate the log CPM of the gene count data
-logcpm <- cpm(list, log=TRUE)
-
-# draw a heatmap of individual RNA-seq samples using moderated log CPM
-png("plots/dev/glm_tribolium_hclust.png")
-heatmap(logcpm)
-dev.off()
 
 # parametrize the experimental design with a one-way layout 
 design <- model.matrix(~ 0 + group)
@@ -359,11 +329,6 @@ design
 
 # estimate common dispersion and tagwise dispersions to produce a matrix of pseudo-counts
 list <- estimateDisp(list, design, robust=TRUE)
-
-# plot dispersion estimates and biological coefficient of variation
-png("plots/dev/glm_tribolium_BCV.png")
-plotBCV(list)
-dev.off()
 
 # estimate the QL dispersions
 fit <- glmQLFit(list, design, robust=TRUE)
@@ -385,7 +350,7 @@ con.treatment <- makeContrasts(set.treatment = (treat.4h + treat.24h)/2
                                levels=design)
 
 # look at genes with significant expression across all UV groups
-anov.treatment <- glmTreat(fit, contrast=con.treatment, lfc=log2(1.2))
+anov.treatment <- glmTreat(fit, contrast=con.treatment)
 
 # view summary of DE genes
 summary(decideTests(anov.treatment))
@@ -431,7 +396,7 @@ con.hours <- makeContrasts(set.hours = (cntrl.24h + treat.24h)/2
                            levels=design)
 
 # look at genes with significant expression across all UV groups
-anov.hours <- glmTreat(fit, contrast=con.hours, lfc=log2(1.2))
+anov.hours <- glmTreat(fit, contrast=con.hours)
 
 # view summary of DE genes
 summary(decideTests(anov.hours))
@@ -479,7 +444,7 @@ con.interaction <- makeContrasts(set.interaction = ((treat.4h + treat.24h)/2
                                  levels=design)
 
 # look at genes with significant expression
-anov.interaction <- glmTreat(fit, contrast=con.interaction, lfc=log2(1.2))
+anov.interaction <- glmTreat(fit, contrast=con.interaction)
 
 # view summary of DE genes
 summary(decideTests(anov.interaction))
