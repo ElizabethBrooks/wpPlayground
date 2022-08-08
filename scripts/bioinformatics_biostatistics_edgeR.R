@@ -107,7 +107,7 @@ par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
 plotMDS(list, col=colors[group], pch=points[group])
 
 # place the legend outside the right side of the plot
-legend("topright", inset=c(-0.3,0), legend=levels(group), pch=points, col=colors)
+legend("topright", inset=c(-0.4,0), legend=levels(group), pch=points, col=colors)
 
 # close the plot
 dev.off()
@@ -167,12 +167,6 @@ ggplot(data=resultsTbl_4h, aes(x=logFC, y=-log10(FDR), color = topDE)) +
   geom_point() +
   theme_minimal() +
   scale_colour_discrete(type = ghibli_subset, breaks = c("Up", "Down"))
-
-# identify significantly DE genes by FDR
-resultsTbl_4h.keep <- resultsTbl_4h$FDR < 0.05
-
-# create filtered results table of DE genes
-resultsTbl_4h_filtered <- resultsTbl_4h[resultsTbl_4h.keep,]
 
 ###
 ## treat_24h vs cntrl_24h
@@ -329,7 +323,7 @@ glm_targets <- read.csv(file="groupingFactors_tribolium.csv", row.names="sample"
 glm_group <- factor(paste(glm_targets$treatment, glm_targets$hours, sep="."))
 
 # create DGE list object
-glm_list <- DGEList(counts=tribolium_counts, glm_group=glm_group)
+glm_list <- DGEList(counts=tribolium_counts, group=glm_group)
 
 # add the sample names
 colnames(glm_list) <- rownames(glm_targets)
@@ -532,7 +526,7 @@ geneSet_hours <- rownames(tagsTbl_hours_filtered)
 geneSet_interaction <- rownames(tagsTbl_inter_filtered)
 
 # create combined glm_list of DE gene names
-glm_list_venn <- glm_list(hours = geneSet_hours, 
+glm_list_venn <- list(hours = geneSet_hours, 
                           interaction = geneSet_interaction)
 
 # create venn diagram
