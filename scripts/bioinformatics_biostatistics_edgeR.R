@@ -326,7 +326,7 @@ ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("24h","treat","cnt
 ##
 
 # import glm_grouping factor
-glm_targets <- read.csv(file="glm_groupingFactors_tribolium.csv", row.names="sample")
+glm_targets <- read.csv(file="groupingFactors_tribolium.csv", row.names="sample")
 
 # setup a glm_design matrix
 glm_group <- factor(paste(glm_targets$treatment, glm_targets$hours, sep="."))
