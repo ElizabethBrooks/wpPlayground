@@ -86,9 +86,6 @@ list <- list[keep, , keep.lib.sizes=FALSE]
 # calculate scaling factors
 list <- calcNormFactors(list)
 
-# view normalization factors
-list$samples
-
 # compute counts per million (CPM) using normalized library sizes
 normList <- cpm(list, normalized.lib.sizes=TRUE)
 
