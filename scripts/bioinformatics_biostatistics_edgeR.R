@@ -390,7 +390,7 @@ con.treatment <- makeContrasts(set.treatment = (treat.4h + treat.24h)/2
                                levels=glm_design)
 
 # look at genes with significant expression across all UV glm_groups
-anov.treatment <- glmTreat(glm_fit, contrast=con.treatment, lfc=log2(1.2))
+anov.treatment <- glmTreat(glm_fit, contrast=con.treatment, lfc=log2(1))
 
 # view summary of DE genes
 summary(decideTests(anov.treatment))
@@ -435,7 +435,7 @@ con.hours <- makeContrasts(set.hours = (cntrl.24h + treat.24h)/2
                            levels=glm_design)
 
 # look at genes with significant expression across all UV glm_groups
-anov.hours <- glmTreat(glm_fit, contrast=con.hours, lfc=log2(1.2))
+anov.hours <- glmTreat(glm_fit, contrast=con.hours, lfc=log2(1))
 
 # view summary of DE genes
 summary(decideTests(anov.hours))
@@ -482,7 +482,7 @@ con.interaction <- makeContrasts(set.interaction = ((treat.4h + treat.24h)/2
                                  levels=glm_design)
 
 # look at genes with significant expression
-anov.interaction <- glmTreat(glm_fit, contrast=con.interaction, lfc=log2(1.2))
+anov.interaction <- glmTreat(glm_fit, contrast=con.interaction, lfc=log2(1))
 
 # view summary of DE genes
 summary(decideTests(anov.interaction))
