@@ -385,7 +385,8 @@ plotQLDisp(glm_fit)
 ###
 
 # examine the overall effect of treatment
-con.treatment <- makeContrasts(set.treatment = (treat.4h + treat.24h)/2
+con.treatment <- makeContrasts(set.treatment = 
+                               (treat.4h + treat.24h)/2
                                - (cntrl.4h + cntrl.24h)/2,
                                levels=glm_design)
 
@@ -430,7 +431,8 @@ tagsTbl_treatment_filtered <- tagsTbl_treatment[tagsTbl_treatment.glm_keep,]
 ###
 
 # examine the overall effect of hours
-con.hours <- makeContrasts(set.hours = (cntrl.24h + treat.24h)/2
+con.hours <- makeContrasts(set.hours = 
+                           (cntrl.24h + treat.24h)/2
                            - (cntrl.4h + treat.4h)/2,
                            levels=glm_design)
 
@@ -475,10 +477,11 @@ tagsTbl_hours_filtered <- tagsTbl_hours[tagsTbl_hours.glm_keep,]
 ###
 
 # examine any interaction effect
-con.interaction <- makeContrasts(set.interaction = ((treat.4h + treat.24h)/2
-                                                    - (cntrl.4h + cntrl.24h)/2)
+con.interaction <- makeContrasts(set.interaction = 
+                                 ((treat.4h + treat.24h)/2
+                                 - (cntrl.4h + cntrl.24h)/2)
                                  - ((cntrl.24h + treat.24h)/2
-                                    - (cntrl.4h + treat.4h)/2),
+                                 - (cntrl.4h + treat.4h)/2),
                                  levels=glm_design)
 
 # conduct gene wise statistical tests
