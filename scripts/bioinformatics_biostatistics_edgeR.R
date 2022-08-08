@@ -331,9 +331,6 @@ ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("24h","treat","cnt
 # GLM Setup
 ##
 
-# import gene count data
-tribolium_counts <- read.csv("TriboliumCounts.csv", row.names="X")
-
 # import grouping factor
 targets <- read.csv(file="groupingFactors_tribolium.csv", row.names="sample")
 

@@ -282,9 +282,6 @@ dev.off()
 # GLM Setup
 ##
 
-# import gene count data
-tribolium_counts <- read.csv("data/TriboliumCounts.csv", row.names="X")
-
 # import grouping factor
 targets <- read.csv(file="data/groupingFactors_tribolium.csv", row.names="sample")
 
