@@ -322,22 +322,22 @@ ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("24h","treat","cnt
 # GLM Design
 ##
 
-# import glm_grouping factor
+# import grouping factor
 glm_targets <- read.csv(file="groupingFactors_tribolium.csv", row.names="sample")
 
-# setup a glm_design matrix
+# setup a design matrix
 glm_group <- factor(paste(glm_targets$treatment, glm_targets$hours, sep="."))
 
-# create DGE glm_list object
+# create DGE list object
 glm_list <- DGEList(counts=tribolium_counts, glm_group=glm_group)
 
 # add the sample names
 colnames(glm_list) <- rownames(glm_targets)
 
-# parametrize the experimental glm_design with a one-way layout 
+# parametrize the experimental design with a one-way layout 
 glm_design <- model.matrix(~ 0 + glm_group)
 
-# add glm_group names
+# add group names
 colnames(glm_design) <- levels(glm_group)
 
 
@@ -345,14 +345,14 @@ colnames(glm_design) <- levels(glm_group)
 # GLM Normalization
 ##
 
-# filter the glm_list of gene counts based on expression levels
+# filter the list of gene counts based on expression levels
 glm_keep <- filterByExpr(glm_list)
 
 # view the number of filtered genes
 table(glm_keep)
 
 # remove genes that are not expressed in either experimental condition
-glm_list <- glm_list[glm_keep, , glm_keep.lib.sizes=FALSE]
+glm_list <- glm_list[glm_keep, , keep.lib.sizes=FALSE]
 
 # calculate scaling factors
 glm_list <- calcNormFactors(glm_list)
