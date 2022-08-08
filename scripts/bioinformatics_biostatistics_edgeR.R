@@ -525,10 +525,10 @@ tagsTbl_inter_filtered <- tagsTbl_inter[tagsTbl_inter.glm_keep,]
 # GLM Results Exploration
 ##
 
-# retrieve set of DE gene names for treat contrast
+# retrieve set of DE gene names for hours contrast
 geneSet_hours <- rownames(tagsTbl_hours_filtered)
 
-# retrieve set of DE gene names for cntrl contrast
+# retrieve set of DE gene names for interaction contrast
 geneSet_interaction <- rownames(tagsTbl_inter_filtered)
 
 # create combined glm_list of DE gene names
@@ -540,13 +540,6 @@ ggVennDiagram(glm_list_venn, label_alpha=0.25, category.names = c("hours","inter
   scale_color_brewer(palette = "Paired")
 
 
-##
-# Saving Tables
-##
-# write the table of normalized counts to a file
-write.table(norm_glm_list, file="Tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
-
-
 ## 
 # Saving Plots
 ##
@@ -555,3 +548,10 @@ png("glm_tribolium_venn.png")
 ggVennDiagram(glm_list_venn, label_alpha=0.25, category.names = c("hours","interaction")) +
   scale_color_brewer(palette = "Paired")
 dev.off()
+
+
+##
+# Saving Tables
+##
+# write the table of normalized counts to a file
+write.table(norm_glm_list, file="Tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
