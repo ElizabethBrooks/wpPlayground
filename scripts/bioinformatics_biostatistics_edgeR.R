@@ -332,10 +332,10 @@ ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("24h","treat","cnt
 ##
 
 # import gene count data
-tribolium_counts <- read.csv("data/TriboliumCounts.csv", row.names="X")
+tribolium_counts <- read.csv("TriboliumCounts.csv", row.names="X")
 
 # import grouping factor
-targets <- read.csv(file="data/groupingFactors_tribolium.csv", row.names="sample")
+targets <- read.csv(file="groupingFactors_tribolium.csv", row.names="sample")
 
 # setup a design matrix
 group <- factor(paste(targets$treatment,targets$hours,sep="."))
