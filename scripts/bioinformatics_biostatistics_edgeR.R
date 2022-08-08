@@ -325,17 +325,17 @@ ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("24h","treat","cnt
 # GLM Setup
 ##
 
-# import grouping factor
-targets <- read.csv(file="groupingFactors_tribolium.csv", row.names="sample")
+# import glm_grouping factor
+glm_targets <- read.csv(file="glm_groupingFactors_tribolium.csv", row.names="sample")
 
-# setup a design matrix
-group <- factor(paste(targets$treatment,targets$hours,sep="."))
+# setup a glm_design matrix
+glm_group <- factor(paste(glm_targets$treatment, glm_targets$hours, sep="."))
 
-# create DGE list object
-list <- DGEList(counts=tribolium_counts,group=group)
+# create DGE glm_list object
+glm_list <- DGEglm_list(counts=tribolium_counts, glm_group=glm_group)
 
 # add the sample names
-colnames(list) <- rownames(targets)
+colnames(glm_list) <- rownames(glm_targets)
 
 
 ##
@@ -343,22 +343,22 @@ colnames(list) <- rownames(targets)
 ##
 
 # plot the library sizes before normalization
-barplot(list$samples$lib.size*1e-6, names=1:12, ylab="Library size (millions)")
+barplot(glm_list$samples$lib.size*1e-6, names=1:12, ylab="Library size (millions)")
 
-# filter the list of gene counts based on expression levels
-keep <- filterByExpr(list)
+# filter the glm_list of gene counts based on expression levels
+glm_keep <- filterByExpr(glm_list)
 
 # view the number of filtered genes
-table(keep)
+table(glm_keep)
 
 # remove genes that are not expressed in either experimental condition
-list <- list[keep, , keep.lib.sizes=FALSE]
+glm_list <- glm_list[glm_keep, , glm_keep.lib.sizes=FALSE]
 
 # calculate scaling factors
-list <- calcNormFactors(list)
+glm_list <- calcNormFactors(glm_list)
 
 # compute counts per million (CPM) using normalized library sizes
-normList <- cpm(list, normalized.lib.sizes=TRUE)
+norm_glm_list <- cpm(glm_list, normalized.lib.sizes=TRUE)
 
 
 ##
@@ -375,40 +375,40 @@ colors <- rep(c(ghibli_colors[3], ghibli_colors[6]), 2)
 par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
 
 # MDS plot with distances approximating log2 fold changes
-plotMDS(list, col=colors[group], pch=points[group])
+plotMDS(glm_list, col=colors[glm_group], pch=points[glm_group])
 
 # place the legend outside the right side of the plot
-legend("topright", inset=c(-0.3,0), legend=levels(group), pch=points, col=colors)
+legend("topright", inset=c(-0.3,0), legend=levels(glm_group), pch=points, col=colors)
 
 # close the plot
 dev.off()
 
 # calculate the log CPM of the gene count data
-logcpm <- cpm(list, log=TRUE)
+glm_logcpm <- cpm(glm_list, log=TRUE)
 
 # draw a heatmap of individual RNA-seq samples using moderated log CPM
-heatmap(logcpm)
+heatmap(glm_logcpm)
 
-# parametrize the experimental design with a one-way layout 
-design <- model.matrix(~ 0 + group)
+# parametrize the experimental glm_design with a one-way layout 
+glm_design <- model.matrix(~ 0 + glm_group)
 
-# add group names
-colnames(design) <- levels(group)
+# add glm_group names
+colnames(glm_design) <- levels(glm_group)
 
-# view design layout
-design
+# view glm_design layout
+glm_design
 
 # estimate common dispersion and tagwise dispersions to produce a matrix of pseudo-counts
-list <- estimateDisp(list, design, robust=TRUE)
+glm_list <- estimateDisp(glm_list, glm_design, robust=TRUE)
 
 # plot dispersion estimates and biological coefficient of variation
-plotBCV(list)
+plotBCV(glm_list)
 
 # estimate the QL dispersions
-fit <- glmQLFit(list, design, robust=TRUE)
+glm_fit <- glmQLglm_fit(glm_list, glm_design, robust=TRUE)
 
 # plot the QL dispersions
-plotQLDisp(fit)
+plotQLDisp(glm_fit)
 
 
 ##
@@ -422,10 +422,10 @@ plotQLDisp(fit)
 # examine the overall effect of treatment
 con.treatment <- makeContrasts(set.treatment = (treat.4h + treat.24h)/2
                                - (cntrl.4h + cntrl.24h)/2,
-                               levels=design)
+                               levels=glm_design)
 
-# look at genes with significant expression across all UV groups
-anov.treatment <- glmTreat(fit, contrast=con.treatment, lfc=log2(1.2))
+# look at genes with significant expression across all UV glm_groups
+anov.treatment <- glmTreat(glm_fit, contrast=con.treatment, lfc=log2(1.2))
 
 # view summary of DE genes
 summary(decideTests(anov.treatment))
@@ -455,10 +455,10 @@ ggplot(data=tagsTbl_treatment, aes(x=logFC, y=-log10(FDR), color = topDE)) +
   scale_colour_discrete(type = ghibli_subset, breaks = c("Up", "Down"))
 
 # identify significantly DE genes by FDR
-tagsTbl_treatment.keep <- tagsTbl_treatment$FDR < 0.05
+tagsTbl_treatment.glm_keep <- tagsTbl_treatment$FDR < 0.05
 
 # create filtered results table of DE genes
-tagsTbl_treatment_filtered <- tagsTbl_treatment[tagsTbl_treatment.keep,]
+tagsTbl_treatment_filtered <- tagsTbl_treatment[tagsTbl_treatment.glm_keep,]
 
 ###
 ## hours
@@ -467,10 +467,10 @@ tagsTbl_treatment_filtered <- tagsTbl_treatment[tagsTbl_treatment.keep,]
 # examine the overall effect of hours
 con.hours <- makeContrasts(set.hours = (cntrl.24h + treat.24h)/2
                            - (cntrl.4h + treat.4h)/2,
-                           levels=design)
+                           levels=glm_design)
 
-# look at genes with significant expression across all UV groups
-anov.hours <- glmTreat(fit, contrast=con.hours, lfc=log2(1.2))
+# look at genes with significant expression across all UV glm_groups
+anov.hours <- glmTreat(glm_fit, contrast=con.hours, lfc=log2(1.2))
 
 # view summary of DE genes
 summary(decideTests(anov.hours))
@@ -500,10 +500,10 @@ ggplot(data=tagsTbl_hours, aes(x=logFC, y=-log10(FDR), color = topDE)) +
   scale_colour_discrete(type = ghibli_subset, breaks = c("Up", "Down"))
 
 # identify significantly DE genes by FDR
-tagsTbl_hours.keep <- tagsTbl_hours$FDR < 0.05
+tagsTbl_hours.glm_keep <- tagsTbl_hours$FDR < 0.05
 
 # create filtered results table of DE genes
-tagsTbl_hours_filtered <- tagsTbl_hours[tagsTbl_hours.keep,]
+tagsTbl_hours_filtered <- tagsTbl_hours[tagsTbl_hours.glm_keep,]
 
 ###
 ## interaction
@@ -514,10 +514,10 @@ con.interaction <- makeContrasts(set.interaction = ((treat.4h + treat.24h)/2
                                                     - (cntrl.4h + cntrl.24h)/2)
                                  - ((cntrl.24h + treat.24h)/2
                                     - (cntrl.4h + treat.4h)/2),
-                                 levels=design)
+                                 levels=glm_design)
 
 # look at genes with significant expression
-anov.interaction <- glmTreat(fit, contrast=con.interaction, lfc=log2(1.2))
+anov.interaction <- glmTreat(glm_fit, contrast=con.interaction, lfc=log2(1.2))
 
 # view summary of DE genes
 summary(decideTests(anov.interaction))
@@ -547,10 +547,10 @@ ggplot(data=tagsTbl_inter, aes(x=logFC, y=-log10(FDR), color = topDE)) +
   scale_colour_discrete(type = ghibli_subset, breaks = c("Up", "Down"))
 
 # identify significantly DE genes by FDR
-tagsTbl_inter.keep <- tagsTbl_inter$FDR < 0.05
+tagsTbl_inter.glm_keep <- tagsTbl_inter$FDR < 0.05
 
 # create filtered results table of DE genes
-tagsTbl_inter_filtered <- tagsTbl_inter[tagsTbl_inter.keep,]
+tagsTbl_inter_filtered <- tagsTbl_inter[tagsTbl_inter.glm_keep,]
 
 
 ##
@@ -563,12 +563,12 @@ geneSet_hours <- rownames(tagsTbl_hours_filtered)
 # retrieve set of DE gene names for cntrl contrast
 geneSet_interaction <- rownames(tagsTbl_inter_filtered)
 
-# create combined list of DE gene names
-list_venn <- list(hours = geneSet_hours, 
-                  interaction = geneSet_interaction)
+# create combined glm_list of DE gene names
+glm_list_venn <- glm_list(hours = geneSet_hours, 
+                          interaction = geneSet_interaction)
 
 # create venn diagram
-ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("hours","interaction")) +
+ggVennDiagram(glm_list_venn, label_alpha=0.25, category.names = c("hours","interaction")) +
   scale_color_brewer(palette = "Paired")
 
 
@@ -576,7 +576,7 @@ ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("hours","interacti
 # Saving Tables
 ##
 # write the table of normalized counts to a file
-write.table(normList, file="Tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
+write.table(norm_glm_list, file="Tribolium_normalizedCounts.csv", sep=",", row.names=TRUE)
 
 
 ## 
@@ -584,6 +584,6 @@ write.table(normList, file="Tribolium_normalizedCounts.csv", sep=",", row.names=
 ##
 # save the glm results venn diagram plot to a file
 png("glm_tribolium_venn.png")
-ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("hours","interaction")) +
+ggVennDiagram(glm_list_venn, label_alpha=0.25, category.names = c("hours","interaction")) +
   scale_color_brewer(palette = "Paired")
 dev.off()
