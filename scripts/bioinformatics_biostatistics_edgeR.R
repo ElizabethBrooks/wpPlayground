@@ -120,7 +120,7 @@ heatmap(logcpm)
 
 
 ##
-# Negative Binomial Model
+# Pairwise Fitting
 ##
 
 # estimate common dispersion and tagwise dispersions to produce a matrix of pseudo-counts
