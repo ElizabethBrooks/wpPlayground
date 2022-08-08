@@ -340,9 +340,6 @@ glm_design <- model.matrix(~ 0 + glm_group)
 # add glm_group names
 colnames(glm_design) <- levels(glm_group)
 
-# view glm_design layout
-glm_design
-
 
 ##
 # GLM Normalization
