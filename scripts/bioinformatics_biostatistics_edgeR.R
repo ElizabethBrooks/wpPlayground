@@ -319,7 +319,7 @@ ggVennDiagram(list_venn, label_alpha=0.25, category.names = c("24h","treat","cnt
 
 
 ##
-# GLM Setup
+# GLM Design
 ##
 
 # import glm_grouping factor
@@ -334,13 +334,19 @@ glm_list <- DGEglm_list(counts=tribolium_counts, glm_group=glm_group)
 # add the sample names
 colnames(glm_list) <- rownames(glm_targets)
 
+# parametrize the experimental glm_design with a one-way layout 
+glm_design <- model.matrix(~ 0 + glm_group)
+
+# add glm_group names
+colnames(glm_design) <- levels(glm_group)
+
+# view glm_design layout
+glm_design
+
 
 ##
 # GLM Normalization
 ##
-
-# plot the library sizes before normalization
-barplot(glm_list$samples$lib.size*1e-6, names=1:12, ylab="Library size (millions)")
 
 # filter the glm_list of gene counts based on expression levels
 glm_keep <- filterByExpr(glm_list)
@@ -359,41 +365,8 @@ norm_glm_list <- cpm(glm_list, normalized.lib.sizes=TRUE)
 
 
 ##
-# GLM Data Exploration
+# GLM Fitting
 ##
-
-# vector of shape numbers for the MDS plot
-points <- c(0,1,15,16)
-
-# vector of colors for the MDS plot
-colors <- rep(c(ghibli_colors[3], ghibli_colors[6]), 2)
-
-# add extra space to right of plot area and change clipping to figure
-par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
-
-# MDS plot with distances approximating log2 fold changes
-plotMDS(glm_list, col=colors[glm_group], pch=points[glm_group])
-
-# place the legend outside the right side of the plot
-legend("topright", inset=c(-0.3,0), legend=levels(glm_group), pch=points, col=colors)
-
-# close the plot
-dev.off()
-
-# calculate the log CPM of the gene count data
-glm_logcpm <- cpm(glm_list, log=TRUE)
-
-# draw a heatmap of individual RNA-seq samples using moderated log CPM
-heatmap(glm_logcpm)
-
-# parametrize the experimental glm_design with a one-way layout 
-glm_design <- model.matrix(~ 0 + glm_group)
-
-# add glm_group names
-colnames(glm_design) <- levels(glm_group)
-
-# view glm_design layout
-glm_design
 
 # estimate common dispersion and tagwise dispersions to produce a matrix of pseudo-counts
 glm_list <- estimateDisp(glm_list, glm_design, robust=TRUE)
@@ -402,10 +375,11 @@ glm_list <- estimateDisp(glm_list, glm_design, robust=TRUE)
 plotBCV(glm_list)
 
 # estimate the QL dispersions
-glm_fit <- glmQLglm_fit(glm_list, glm_design, robust=TRUE)
+glm_fit <- glmQLfit(glm_list, glm_design, robust=TRUE)
 
 # plot the QL dispersions
 plotQLDisp(glm_fit)
+
 
 
 ##
