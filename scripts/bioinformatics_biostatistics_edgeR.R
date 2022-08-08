@@ -389,7 +389,7 @@ con.treatment <- makeContrasts(set.treatment = (treat.4h + treat.24h)/2
                                - (cntrl.4h + cntrl.24h)/2,
                                levels=glm_design)
 
-# look at genes with significant expression across all UV glm_groups
+# conduct gene wise statistical tests
 anov.treatment <- glmTreat(glm_fit, contrast=con.treatment)
 
 # view summary of DE genes
@@ -434,7 +434,7 @@ con.hours <- makeContrasts(set.hours = (cntrl.24h + treat.24h)/2
                            - (cntrl.4h + treat.4h)/2,
                            levels=glm_design)
 
-# look at genes with significant expression across all UV glm_groups
+# conduct gene wise statistical tests
 anov.hours <- glmTreat(glm_fit, contrast=con.hours)
 
 # view summary of DE genes
@@ -481,7 +481,7 @@ con.interaction <- makeContrasts(set.interaction = ((treat.4h + treat.24h)/2
                                     - (cntrl.4h + treat.4h)/2),
                                  levels=glm_design)
 
-# look at genes with significant expression
+# conduct gene wise statistical tests
 anov.interaction <- glmTreat(glm_fit, contrast=con.interaction)
 
 # view summary of DE genes
