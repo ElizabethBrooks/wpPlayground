@@ -60,7 +60,7 @@ list <- DGEList(counts=tribolium_counts,group=group)
 ##
 
 #Plot the library sizes before normalization and write to a png file
-png("plots/dev/exactTest_tribolium_librarySizes.png")
+png("plots/dev/tribolium_librarySizes.png")
 barplot(list$samples$lib.size*1e-6, names=1:12, ylab="Library size (millions)")
 dev.off() 
 
@@ -84,7 +84,7 @@ points <- c(0,1,15,16)
 colors <- rep(c(ghibli_colors[3], ghibli_colors[6]), 2)
 
 # MDS plot with distances approximating log2 fold changes
-png("plots/dev/exactTest_tribolium_MDS.png")
+png("plots/dev/tribolium_MDS.png")
 # add extra space to right of plot area and change clipping to figure
 par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
 plotMDS(list, col=colors[group], pch=points[group])
@@ -97,7 +97,7 @@ logcpm <- cpm(list, log=TRUE)
 
 #Draw a heatmap of individual RNA-seq samples using moderated
 # log-counts-per-million after normalization
-png("plots/dev/exactTest_tribolium_hclust.png")
+png("plots/dev/tribolium_hclust.png")
 heatmap(logcpm)
 dev.off()
 
@@ -106,7 +106,7 @@ dev.off()
 list <- estimateDisp(list)
 
 #View dispersion estimates and biological coefficient of variation
-png("plots/dev/exactTest_tribolium_BCV.png")
+png("plots/dev/tribolium_BCV.png")
 plotBCV(list)
 dev.off()
 
