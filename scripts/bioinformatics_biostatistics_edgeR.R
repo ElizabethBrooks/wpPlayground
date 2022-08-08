@@ -368,11 +368,8 @@ norm_glm_list <- cpm(glm_list, normalized.lib.sizes=TRUE)
 # estimate common dispersion and tagwise dispersions to produce a matrix of pseudo-counts
 glm_list <- estimateDisp(glm_list, glm_design, robust=TRUE)
 
-# plot dispersion estimates and biological coefficient of variation
-plotBCV(glm_list)
-
 # estimate the QL dispersions
-glm_fit <- glmQLfit(glm_list, glm_design, robust=TRUE)
+glm_fit <- glmQLFit(glm_list, glm_design, robust=TRUE)
 
 # plot the QL dispersions
 plotQLDisp(glm_fit)
