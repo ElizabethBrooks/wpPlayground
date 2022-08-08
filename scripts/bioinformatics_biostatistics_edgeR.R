@@ -329,7 +329,7 @@ glm_targets <- read.csv(file="groupingFactors_tribolium.csv", row.names="sample"
 glm_group <- factor(paste(glm_targets$treatment, glm_targets$hours, sep="."))
 
 # create DGE glm_list object
-glm_list <- DGEglm_list(counts=tribolium_counts, glm_group=glm_group)
+glm_list <- DGEList(counts=tribolium_counts, glm_group=glm_group)
 
 # add the sample names
 colnames(glm_list) <- rownames(glm_targets)
