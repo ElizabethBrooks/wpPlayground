@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 # R script to quantify transcriptomic data for the red flour beetle
 
 # set the working directory
